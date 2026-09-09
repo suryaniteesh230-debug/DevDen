@@ -1,0 +1,557 @@
+{
+  "schema_version": "1.0",
+  "service_id": "uidai-aadhaar-address-update",
+  "pack_version": "1.2.0",
+  "status": "superseded",
+  "jurisdiction": {
+    "level": "national",
+    "name": "India"
+  },
+  "department": "Unique Identification Authority of India",
+  "publisher": "Unique Identification Authority of India",
+  "title": {
+    "en": "Update your Aadhaar address online"
+  },
+  "short_description": {
+    "en": "Official UIDAI guidance for requesting an address update through the MyAadhaar portal."
+  },
+  "intent_phrases": [
+    "change Aadhaar address",
+    "update address in Aadhaar",
+    "moved to a new address"
+  ],
+  "category": "identity-documents",
+  "interaction_modes": [
+    "online"
+  ],
+  "sources": [
+    {
+      "source_id": "uidai-update-overview",
+      "publisher": "Unique Identification Authority of India",
+      "title": "Updating Data on Aadhaar",
+      "url": "https://uidai.gov.in/en/updating-data-on-aadhaar",
+      "retrieved_at": "2026-08-28T10:10:25+05:30",
+      "official_updated_date": "2026-07-03",
+      "sha256": null,
+      "source_type": "webpage"
+    },
+    {
+      "source_id": "uidai-enrolment-update-faq",
+      "publisher": "Unique Identification Authority of India",
+      "title": "Enrolment & Update: myAadhaar - Online Update Service FAQ",
+      "url": "https://uidai.gov.in/en/enrolment-and-update",
+      "retrieved_at": "2026-08-28T10:10:25+05:30",
+      "official_updated_date": "2026-07-02",
+      "sha256": null,
+      "source_type": "webpage"
+    },
+    {
+      "source_id": "uidai-my-aadhaar-services",
+      "publisher": "Unique Identification Authority of India",
+      "title": "My Aadhaar",
+      "url": "https://uidai.gov.in/en/my-aadhaar",
+      "retrieved_at": "2026-08-28T10:10:25+05:30",
+      "official_updated_date": "2026-06-26",
+      "sha256": null,
+      "source_type": "webpage"
+    },
+    {
+      "source_id": "uidai-aadhaar-app-faq",
+      "publisher": "Unique Identification Authority of India",
+      "title": "Aadhaar App FAQ",
+      "url": "https://uidai.gov.in/en/aadhaar-app-faq",
+      "retrieved_at": "2026-08-28T10:34:55+05:30",
+      "official_updated_date": "2026-07-02",
+      "sha256": null,
+      "source_type": "webpage"
+    }
+  ],
+  "last_verified_at": "2026-08-28T10:10:25+05:30",
+  "review_due_at": "2026-09-11T10:10:25+05:30",
+  "requirements": [
+    {
+      "fact_id": "registered-mobile",
+      "text": "Your mobile number must already be registered with Aadhaar to use the online service and receive the login OTP.",
+      "source_ids": [
+        "uidai-update-overview",
+        "uidai-enrolment-update-faq"
+      ]
+    },
+    {
+      "fact_id": "aadhaar-number",
+      "text": "You need your Aadhaar number to log in to the MyAadhaar portal.",
+      "source_ids": [
+        "uidai-update-overview"
+      ]
+    }
+  ],
+  "required_documents": [
+    {
+      "document_id": "valid-proof-of-address",
+      "name": "Valid proof of address",
+      "guidance": "Use a proof-of-address document accepted by UIDAI. The document should be in the Aadhaar holder's name, the entered address should match it, and the uploaded scan should be clear and in colour.",
+      "source_ids": [
+        "uidai-update-overview",
+        "uidai-enrolment-update-faq"
+      ]
+    }
+  ],
+  "fee": {
+    "verification_status": "conflicting",
+    "amount": null,
+    "currency": null,
+    "display_message": "Fee needs confirmation because UIDAI's official pages currently show different amounts for this service.",
+    "claims": [
+      {
+        "amount": "50.00",
+        "currency": "INR",
+        "qualifier": "The online address-update FAQ states this amount, including GST.",
+        "source_ids": [
+          "uidai-enrolment-update-faq"
+        ]
+      },
+      {
+        "amount": "75.00",
+        "currency": "INR",
+        "qualifier": "The My Aadhaar service entry displays this amount for address update.",
+        "source_ids": [
+          "uidai-my-aadhaar-services"
+        ]
+      }
+    ],
+    "resolution_guidance": "UIDAI's official pages currently show different amounts for this service. Confirm the fee on the official portal before payment.",
+    "source_ids": [
+      "uidai-enrolment-update-faq",
+      "uidai-my-aadhaar-services"
+    ]
+  },
+  "steps": [
+    {
+      "step_id": "open-portal",
+      "order": 1,
+      "title": "Open the official MyAadhaar portal",
+      "instruction": "Continue from Sahayi to the official MyAadhaar website. Sahayi does not collect your Aadhaar number or submit the request.",
+      "source_ids": [
+        "uidai-update-overview"
+      ]
+    },
+    {
+      "step_id": "authenticate",
+      "order": 2,
+      "title": "Log in on MyAadhaar",
+      "instruction": "On the official portal, use your Aadhaar number and the OTP sent to your registered mobile number.",
+      "source_ids": [
+        "uidai-update-overview"
+      ]
+    },
+    {
+      "step_id": "enter-address",
+      "order": 3,
+      "title": "Enter the new address",
+      "instruction": "Enter the address requested by the official service and make sure it matches the proof-of-address document.",
+      "source_ids": [
+        "uidai-enrolment-update-faq"
+      ]
+    },
+    {
+      "step_id": "upload-document",
+      "order": 4,
+      "title": "Upload proof of address",
+      "instruction": "Upload a clear colour scan or image of an accepted proof-of-address document on the official portal.",
+      "source_ids": [
+        "uidai-update-overview",
+        "uidai-enrolment-update-faq"
+      ]
+    },
+    {
+      "step_id": "pay-and-submit",
+      "order": 5,
+      "title": "Pay and submit on MyAadhaar",
+      "instruction": "Confirm the fee shown on the official portal before payment, then pay and submit the request. Sahayi cannot predict the amount that will be charged, and submission does not guarantee approval.",
+      "source_ids": [
+        "uidai-enrolment-update-faq",
+        "uidai-my-aadhaar-services"
+      ]
+    },
+    {
+      "step_id": "save-srn",
+      "order": 6,
+      "title": "Save the service request number",
+      "instruction": "After successful submission, download the invoice and keep the SRN so you can check the request status on the official portal.",
+      "source_ids": [
+        "uidai-enrolment-update-faq"
+      ]
+    }
+  ],
+  "submission_channels": [
+    {
+      "channel_id": "myaadhaar-online",
+      "mode": "online",
+      "name": "MyAadhaar portal",
+      "guidance": "The address update request is completed on UIDAI's official MyAadhaar portal, not in Sahayi.",
+      "source_ids": [
+        "uidai-update-overview"
+      ]
+    }
+  ],
+  "official_handoff_url": "https://myaadhaar.uidai.gov.in/",
+  "tracking_guidance": {
+    "fact_id": "srn-tracking",
+    "text": "A successful online address update submission generates an SRN. Keep the downloaded invoice and use the official Check Aadhaar Update Status service.",
+    "source_ids": [
+      "uidai-enrolment-update-faq"
+    ]
+  },
+  "limitations": [
+    {
+      "fact_id": "guidance-only",
+      "text": "Sahayi provides guidance only. It is not UIDAI or a government service and cannot authenticate you, submit an update, or track your request.",
+      "source_ids": [
+        "uidai-update-overview"
+      ]
+    },
+    {
+      "fact_id": "uidai-validation",
+      "text": "UIDAI verifies and validates submitted information and documents; submitting a request does not guarantee an address update.",
+      "source_ids": [
+        "uidai-update-overview",
+        "uidai-enrolment-update-faq"
+      ]
+    }
+  ],
+  "readiness": {
+    "questions": [
+      {
+        "question_id": "mobile-auth-access",
+        "prompt": {
+          "en": "Can you receive the mobile authentication required by UIDAI for the online address-update process?"
+        },
+        "help_text": {
+          "en": "Do not enter a mobile number or OTP here. Choose only Yes or No."
+        },
+        "answer_type": "boolean",
+        "options": null,
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "sensitivity": "non_sensitive",
+        "source_ids": [
+          "uidai-update-overview",
+          "uidai-aadhaar-app-faq"
+        ],
+        "visible_when": null
+      },
+      {
+        "question_id": "address-update-route",
+        "prompt": {
+          "en": "Which official address-update route do you intend to use?"
+        },
+        "help_text": {
+          "en": "Choose a route without entering an address or document detail."
+        },
+        "answer_type": "single_choice",
+        "options": [
+          {
+            "option_id": "own-document",
+            "label": {
+              "en": "My own accepted proof of address"
+            }
+          },
+          {
+            "option_id": "head-of-family",
+            "label": {
+              "en": "A supported Head-of-Family route"
+            }
+          },
+          {
+            "option_id": "unsure",
+            "label": {
+              "en": "I am unsure"
+            }
+          }
+        ],
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "sensitivity": "non_sensitive",
+        "source_ids": [
+          "uidai-update-overview",
+          "uidai-aadhaar-app-faq"
+        ],
+        "visible_when": {
+          "op": "equals",
+          "question_id": "mobile-auth-access",
+          "value": true
+        }
+      },
+      {
+        "question_id": "accepted-poa-ready",
+        "prompt": {
+          "en": "Do you have a proof-of-address document that appears in UIDAI's accepted-document guidance and matches the address you plan to submit?"
+        },
+        "help_text": {
+          "en": "Do not upload or describe the document here. Check only whether it appears to meet UIDAI's guidance."
+        },
+        "answer_type": "boolean",
+        "options": null,
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "sensitivity": "non_sensitive",
+        "source_ids": [
+          "uidai-update-overview",
+          "uidai-enrolment-update-faq"
+        ],
+        "visible_when": {
+          "op": "equals",
+          "question_id": "address-update-route",
+          "value": "own-document"
+        }
+      },
+      {
+        "question_id": "hof-participation-ready",
+        "prompt": {
+          "en": "Can the family member acting as Head of Family take part in and approve the official request?"
+        },
+        "help_text": {
+          "en": "Do not enter their name or Aadhaar details here. UIDAI's current guidance requires the Head of Family to approve the request."
+        },
+        "answer_type": "boolean",
+        "options": null,
+        "minimum": null,
+        "maximum": null,
+        "required": true,
+        "sensitivity": "non_sensitive",
+        "source_ids": [
+          "uidai-aadhaar-app-faq"
+        ],
+        "visible_when": {
+          "op": "equals",
+          "question_id": "address-update-route",
+          "value": "head-of-family"
+        }
+      }
+    ],
+    "outcomes": [
+      {
+        "outcome_id": "own-document-ready",
+        "status": "ready",
+        "title": { "en": "You appear ready for the own-document route" },
+        "explanation": { "en": "Your choices indicate access to mobile authentication and an accepted proof-of-address route. UIDAI will still validate the request and document." },
+        "recommended_next_steps": [
+          { "en": "Review UIDAI's accepted-document guidance before continuing." },
+          { "en": "Continue on the official MyAadhaar service and confirm the fee shown there before payment." }
+        ],
+        "official_handoff_url": "https://myaadhaar.uidai.gov.in/",
+        "source_ids": ["uidai-update-overview", "uidai-enrolment-update-faq", "uidai-my-aadhaar-services"],
+        "disclaimer": { "en": "This readiness result is personalised guidance, not an eligibility decision or official approval." },
+        "is_default": false
+      },
+      {
+        "outcome_id": "hof-ready",
+        "status": "ready",
+        "title": { "en": "You appear ready to review the Head-of-Family route" },
+        "explanation": { "en": "Your choices indicate access to mobile authentication and a Head of Family who can take part in the official approval step." },
+        "recommended_next_steps": [
+          { "en": "Review UIDAI's current Head-of-Family instructions with the participating family member." },
+          { "en": "Continue only through the official channel described by UIDAI." }
+        ],
+        "official_handoff_url": "https://uidai.gov.in/en/aadhaar-app-faq",
+        "source_ids": ["uidai-aadhaar-app-faq"],
+        "disclaimer": { "en": "This readiness result is personalised guidance, not an eligibility decision or official approval." },
+        "is_default": false
+      },
+      {
+        "outcome_id": "use-alternative-channel",
+        "status": "alternative_path",
+        "title": { "en": "Use an alternative official channel" },
+        "explanation": { "en": "The online route requires mobile authentication. UIDAI directs people without access to the registered mobile authentication to an Aadhaar Seva Kendra or authorised enrolment and update centre." },
+        "recommended_next_steps": [
+          { "en": "Review UIDAI's official enrolment and update guidance." },
+          { "en": "Locate an official Aadhaar Seva Kendra or authorised enrolment and update centre." }
+        ],
+        "official_handoff_url": "https://uidai.gov.in/en/enrolment-and-update",
+        "source_ids": ["uidai-aadhaar-app-faq", "uidai-enrolment-update-faq"],
+        "disclaimer": { "en": "This readiness result is personalised guidance, not an eligibility decision or official approval." },
+        "is_default": false
+      },
+      {
+        "outcome_id": "review-document-guidance",
+        "status": "needs_information",
+        "title": { "en": "Review official document guidance" },
+        "explanation": { "en": "You have not confirmed that your proof of address appears to meet UIDAI's accepted-document guidance." },
+        "recommended_next_steps": [
+          { "en": "Review UIDAI's accepted proof-of-address requirements." },
+          { "en": "Return to the readiness check after you can confirm the document route." }
+        ],
+        "official_handoff_url": "https://uidai.gov.in/en/updating-data-on-aadhaar",
+        "source_ids": ["uidai-update-overview", "uidai-enrolment-update-faq"],
+        "disclaimer": { "en": "This readiness result is personalised guidance, not an eligibility decision or official approval." },
+        "is_default": false
+      },
+      {
+        "outcome_id": "confirm-hof-participation",
+        "status": "needs_information",
+        "title": { "en": "Confirm Head-of-Family participation" },
+        "explanation": { "en": "UIDAI's Head-of-Family route requires the participating family member to approve the official request." },
+        "recommended_next_steps": [
+          { "en": "Review UIDAI's current Head-of-Family instructions." },
+          { "en": "Confirm that the Head of Family can complete the official approval step." }
+        ],
+        "official_handoff_url": "https://uidai.gov.in/en/aadhaar-app-faq",
+        "source_ids": ["uidai-aadhaar-app-faq"],
+        "disclaimer": { "en": "This readiness result is personalised guidance, not an eligibility decision or official approval." },
+        "is_default": false
+      },
+      {
+        "outcome_id": "route-cannot-confirm",
+        "status": "cannot_confirm",
+        "title": { "en": "Choose an official route before continuing" },
+        "explanation": { "en": "The readiness check cannot confirm a path until you decide whether to use your own accepted proof of address or review the supported Head-of-Family route." },
+        "recommended_next_steps": [
+          { "en": "Compare UIDAI's own-document and Head-of-Family guidance." },
+          { "en": "Return when you know which official route you intend to use." }
+        ],
+        "official_handoff_url": "https://uidai.gov.in/en/updating-data-on-aadhaar",
+        "source_ids": ["uidai-update-overview", "uidai-aadhaar-app-faq"],
+        "disclaimer": { "en": "This readiness result is personalised guidance, not an eligibility decision or official approval." },
+        "is_default": false
+      },
+      {
+        "outcome_id": "safe-default",
+        "status": "needs_information",
+        "title": { "en": "More information is needed" },
+        "explanation": { "en": "The submitted choices do not establish one of the supported readiness paths." },
+        "recommended_next_steps": [
+          { "en": "Review the official UIDAI guidance before continuing." }
+        ],
+        "official_handoff_url": "https://uidai.gov.in/en/updating-data-on-aadhaar",
+        "source_ids": ["uidai-update-overview"],
+        "disclaimer": { "en": "This readiness result is personalised guidance, not an eligibility decision or official approval." },
+        "is_default": true
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "no-mobile-auth",
+        "priority": 10,
+        "expression": { "op": "equals", "question_id": "mobile-auth-access", "value": false },
+        "outcome_id": "use-alternative-channel",
+        "source_ids": ["uidai-aadhaar-app-faq", "uidai-enrolment-update-faq"]
+      },
+      {
+        "rule_id": "own-document-ready",
+        "priority": 20,
+        "expression": {
+          "op": "all",
+          "expressions": [
+            { "op": "equals", "question_id": "mobile-auth-access", "value": true },
+            { "op": "equals", "question_id": "address-update-route", "value": "own-document" },
+            { "op": "equals", "question_id": "accepted-poa-ready", "value": true }
+          ]
+        },
+        "outcome_id": "own-document-ready",
+        "source_ids": ["uidai-update-overview", "uidai-enrolment-update-faq"]
+      },
+      {
+        "rule_id": "own-document-not-ready",
+        "priority": 30,
+        "expression": {
+          "op": "all",
+          "expressions": [
+            { "op": "equals", "question_id": "mobile-auth-access", "value": true },
+            { "op": "equals", "question_id": "address-update-route", "value": "own-document" },
+            { "op": "equals", "question_id": "accepted-poa-ready", "value": false }
+          ]
+        },
+        "outcome_id": "review-document-guidance",
+        "source_ids": ["uidai-update-overview", "uidai-enrolment-update-faq"]
+      },
+      {
+        "rule_id": "hof-ready",
+        "priority": 40,
+        "expression": {
+          "op": "all",
+          "expressions": [
+            { "op": "equals", "question_id": "mobile-auth-access", "value": true },
+            { "op": "equals", "question_id": "address-update-route", "value": "head-of-family" },
+            { "op": "equals", "question_id": "hof-participation-ready", "value": true }
+          ]
+        },
+        "outcome_id": "hof-ready",
+        "source_ids": ["uidai-aadhaar-app-faq"]
+      },
+      {
+        "rule_id": "hof-not-ready",
+        "priority": 50,
+        "expression": {
+          "op": "all",
+          "expressions": [
+            { "op": "equals", "question_id": "mobile-auth-access", "value": true },
+            { "op": "equals", "question_id": "address-update-route", "value": "head-of-family" },
+            { "op": "equals", "question_id": "hof-participation-ready", "value": false }
+          ]
+        },
+        "outcome_id": "confirm-hof-participation",
+        "source_ids": ["uidai-aadhaar-app-faq"]
+      },
+      {
+        "rule_id": "route-unsure",
+        "priority": 60,
+        "expression": {
+          "op": "all",
+          "expressions": [
+            { "op": "equals", "question_id": "mobile-auth-access", "value": true },
+            { "op": "equals", "question_id": "address-update-route", "value": "unsure" }
+          ]
+        },
+        "outcome_id": "route-cannot-confirm",
+        "source_ids": ["uidai-update-overview", "uidai-aadhaar-app-faq"]
+      }
+    ]
+  },
+  "provenance": {
+    "title": [
+      "uidai-update-overview"
+    ],
+    "short-description": [
+      "uidai-update-overview"
+    ],
+    "official-handoff-url": [
+      "uidai-update-overview"
+    ],
+    "fee": [
+      "uidai-enrolment-update-faq",
+      "uidai-my-aadhaar-services"
+    ],
+    "requirements": [
+      "uidai-update-overview",
+      "uidai-enrolment-update-faq"
+    ],
+    "required-documents": [
+      "uidai-update-overview",
+      "uidai-enrolment-update-faq"
+    ],
+    "submission-channels": [
+      "uidai-update-overview"
+    ],
+    "steps": [
+      "uidai-update-overview",
+      "uidai-enrolment-update-faq",
+      "uidai-my-aadhaar-services"
+    ],
+    "tracking-guidance": [
+      "uidai-enrolment-update-faq"
+    ],
+    "limitations": [
+      "uidai-update-overview",
+      "uidai-enrolment-update-faq"
+    ],
+    "readiness": [
+      "uidai-update-overview",
+      "uidai-enrolment-update-faq",
+      "uidai-my-aadhaar-services",
+      "uidai-aadhaar-app-faq"
+    ]
+  }
+}

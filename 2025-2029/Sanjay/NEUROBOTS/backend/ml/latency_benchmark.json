@@ -1,0 +1,27 @@
+{
+  "cardiac_risk_tool": {
+    "maximum_ms": 16.247964999820397,
+    "mean_ms": 14.639582733994757,
+    "minimum_ms": 14.244023999708588,
+    "p50_ms": 14.515557999857265,
+    "p95_ms": 15.331480999657288,
+    "repetitions": 500
+  },
+  "excluded_from_measurement": [
+    "training",
+    "HTTP overhead",
+    "LangGraph execution",
+    "SHAP explanation"
+  ],
+  "measured_at": "2026-08-07T17:52:46.647915+00:00",
+  "model_version": "cardiac-risk-rf-1.0.0",
+  "triage_risk_agent_with_sqlite_persistence": {
+    "maximum_ms": 16.614062000371632,
+    "mean_ms": 15.477953919962602,
+    "minimum_ms": 15.032028999485192,
+    "p50_ms": 15.352345999872341,
+    "p95_ms": 16.332447749755374,
+    "repetitions": 50
+  },
+  "warmup_repetitions": 10
+}
