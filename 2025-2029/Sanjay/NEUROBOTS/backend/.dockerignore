@@ -1,0 +1,12 @@
+.env
+.env.*
+.pytest_cache
+.ruff_cache
+.venv
+__pycache__
+*.db
+*.pyc
+data/raw
+tests
+triage
+priority

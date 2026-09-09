@@ -1,0 +1,1 @@
+:root { font-family: Inter, "Noto Sans Devanagari", "Noto Sans Malayalam", "Nirmala UI", ui-sans-serif, system-ui, sans-serif; color: #123326; background: #f7faf8; font-synthesis: none; } * { box-sizing: border-box; } body { margin: 0; min-width: 320px; } button, input, select, textarea { font: inherit; }

@@ -1,0 +1,42 @@
+{
+  "graph_version": "acs-kg-1.0.0",
+  "scope": "Source-backed graph for Phase 1 suspected ACS and emergency chest-pain support; not comprehensive medical knowledge.",
+  "nodes": [
+    {"id": "chest_pain", "label": "Chest pain", "type": "SYMPTOM", "aliases": ["chest discomfort"]},
+    {"id": "dyspnea", "label": "Shortness of breath", "type": "SYMPTOM", "aliases": ["dyspnea", "breathlessness"]},
+    {"id": "sweating", "label": "Sweating", "type": "SYMPTOM", "aliases": ["diaphoresis"]},
+    {"id": "arm_discomfort", "label": "Arm or shoulder discomfort", "type": "SYMPTOM", "aliases": ["arm pain", "shoulder pain"]},
+    {"id": "jaw_back_discomfort", "label": "Jaw, neck, or back discomfort", "type": "SYMPTOM", "aliases": ["jaw pain", "back pain"]},
+    {"id": "lightheadedness", "label": "Lightheadedness", "type": "SYMPTOM", "aliases": ["dizziness"]},
+    {"id": "acs", "label": "Acute coronary syndrome", "type": "CONDITION", "aliases": ["ACS"]},
+    {"id": "myocardial_infarction", "label": "Myocardial infarction", "type": "CONDITION", "aliases": ["heart attack", "MI"]},
+    {"id": "unstable_angina", "label": "Unstable angina", "type": "CONDITION", "aliases": []},
+    {"id": "myocardial_injury", "label": "Myocardial injury", "type": "FINDING", "aliases": []},
+    {"id": "troponin_elevation", "label": "Troponin elevation", "type": "LAB_FINDING", "aliases": ["elevated troponin"]},
+    {"id": "troponin_change", "label": "Troponin rise or fall", "type": "LAB_FINDING", "aliases": ["serial troponin change"]},
+    {"id": "ischemic_ecg", "label": "Ischemic ECG change", "type": "TEST_FINDING", "aliases": ["ECG changes"]},
+    {"id": "serial_troponin", "label": "Serial cardiac troponin", "type": "EVALUATION", "aliases": []},
+    {"id": "electrocardiography", "label": "Electrocardiography", "type": "EVALUATION", "aliases": ["ECG"]},
+    {"id": "acute_aortic_syndrome", "label": "Acute aortic syndrome", "type": "CONDITION", "aliases": ["aortic dissection"]},
+    {"id": "pulmonary_embolism", "label": "Pulmonary embolism", "type": "CONDITION", "aliases": ["PE"]}
+  ],
+  "edges": [
+    {"edge_id": "KG-ACS-001", "source": "chest_pain", "relation": "ASSOCIATED_WITH", "target": "acs", "source_id": "ACC-AHA-ACS-2025", "source_reference": "ACS25-SYMPTOMS-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-002", "source": "dyspnea", "relation": "ASSOCIATED_WITH", "target": "acs", "source_id": "ACC-AHA-ACS-2025", "source_reference": "ACS25-SYMPTOMS-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-003", "source": "sweating", "relation": "ASSOCIATED_WITH", "target": "acs", "source_id": "AHA-ACS-PATIENT-2025", "source_reference": "AHA-WOMEN-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-004", "source": "arm_discomfort", "relation": "ASSOCIATED_WITH", "target": "acs", "source_id": "ACC-AHA-ACS-2025", "source_reference": "ACS25-SYMPTOMS-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-005", "source": "jaw_back_discomfort", "relation": "ASSOCIATED_WITH", "target": "acs", "source_id": "ACC-AHA-ACS-2025", "source_reference": "ACS25-SYMPTOMS-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-006", "source": "lightheadedness", "relation": "ASSOCIATED_WITH", "target": "acs", "source_id": "ACC-AHA-ACS-2025", "source_reference": "ACS25-SYMPTOMS-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-007", "source": "acs", "relation": "INCLUDES", "target": "myocardial_infarction", "source_id": "ACC-AHA-ACS-2025", "source_reference": "ACS25-URGENT-02", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-008", "source": "acs", "relation": "INCLUDES", "target": "unstable_angina", "source_id": "ACC-AHA-ACS-2025", "source_reference": "ACS25-URGENT-02", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-009", "source": "troponin_elevation", "relation": "SUPPORTS_CONSIDERATION_OF", "target": "myocardial_injury", "source_id": "FOURTH-UDMI-2018", "source_reference": "UDMI18-INJURY-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-010", "source": "troponin_change", "relation": "SUPPORTS_ACUTE", "target": "myocardial_injury", "source_id": "FOURTH-UDMI-2018", "source_reference": "UDMI18-INJURY-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-011", "source": "myocardial_infarction", "relation": "REQUIRES_EVIDENCE_OF", "target": "myocardial_injury", "source_id": "FOURTH-UDMI-2018", "source_reference": "UDMI18-INJURY-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-012", "source": "ischemic_ecg", "relation": "CAN_SUPPORT", "target": "myocardial_infarction", "source_id": "FOURTH-UDMI-2018", "source_reference": "UDMI18-ISCHEMIA-02", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-013", "source": "serial_troponin", "relation": "EVALUATES", "target": "myocardial_injury", "source_id": "AHA-ACC-CHEST-PAIN-2021", "source_reference": "CHEST21-TROPONIN-02", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-014", "source": "electrocardiography", "relation": "EVALUATES", "target": "acs", "source_id": "AHA-ACC-CHEST-PAIN-2021", "source_reference": "CHEST21-ECG-01", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-015", "source": "chest_pain", "relation": "CAN_BE_ASSOCIATED_WITH", "target": "acute_aortic_syndrome", "source_id": "AHA-ACC-CHEST-PAIN-2021", "source_reference": "CHEST21-DIFFERENTIAL-04", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-016", "source": "chest_pain", "relation": "CAN_BE_ASSOCIATED_WITH", "target": "pulmonary_embolism", "source_id": "AHA-ACC-CHEST-PAIN-2021", "source_reference": "CHEST21-DIFFERENTIAL-04", "graph_version": "acs-kg-1.0.0"},
+    {"edge_id": "KG-ACS-017", "source": "dyspnea", "relation": "CAN_BE_ASSOCIATED_WITH", "target": "pulmonary_embolism", "source_id": "AHA-ACC-CHEST-PAIN-2021", "source_reference": "CHEST21-DIFFERENTIAL-04", "graph_version": "acs-kg-1.0.0"}
+  ]
+}

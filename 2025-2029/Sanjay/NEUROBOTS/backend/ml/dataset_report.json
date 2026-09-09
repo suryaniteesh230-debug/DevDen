@@ -1,0 +1,184 @@
+{
+  "class_distribution": {
+    "negative": 509,
+    "positive": 810
+  },
+  "column_count": 9,
+  "columns": [
+    "age",
+    "gender",
+    "impluse",
+    "pressurehight",
+    "pressurelow",
+    "glucose",
+    "kcm",
+    "troponin",
+    "class"
+  ],
+  "data_types": {
+    "age": "integer",
+    "class": "categorical",
+    "gender": "integer",
+    "glucose": "float",
+    "impluse": "integer",
+    "kcm": "float",
+    "pressurehight": "integer",
+    "pressurelow": "integer",
+    "troponin": "float"
+  },
+  "dataset_filename": "Heart Attack.csv",
+  "dataset_identifier": "doi:10.17632/65gxgy2nmg.2",
+  "duplicate_rows": 0,
+  "excluded_reason_counts": {
+    "diastolic_bp:above_systolic_bp": 8,
+    "heart_rate:above_maximum": 3
+  },
+  "invalid_row_count": 11,
+  "invalid_rows": [
+    {
+      "csv_line": 65,
+      "reasons": [
+        "heart_rate:above_maximum"
+      ]
+    },
+    {
+      "csv_line": 152,
+      "reasons": [
+        "diastolic_bp:above_systolic_bp"
+      ]
+    },
+    {
+      "csv_line": 153,
+      "reasons": [
+        "diastolic_bp:above_systolic_bp"
+      ]
+    },
+    {
+      "csv_line": 154,
+      "reasons": [
+        "diastolic_bp:above_systolic_bp"
+      ]
+    },
+    {
+      "csv_line": 211,
+      "reasons": [
+        "diastolic_bp:above_systolic_bp"
+      ]
+    },
+    {
+      "csv_line": 517,
+      "reasons": [
+        "diastolic_bp:above_systolic_bp"
+      ]
+    },
+    {
+      "csv_line": 719,
+      "reasons": [
+        "heart_rate:above_maximum"
+      ]
+    },
+    {
+      "csv_line": 902,
+      "reasons": [
+        "diastolic_bp:above_systolic_bp"
+      ]
+    },
+    {
+      "csv_line": 1071,
+      "reasons": [
+        "heart_rate:above_maximum"
+      ]
+    },
+    {
+      "csv_line": 1205,
+      "reasons": [
+        "diastolic_bp:above_systolic_bp"
+      ]
+    },
+    {
+      "csv_line": 1273,
+      "reasons": [
+        "diastolic_bp:above_systolic_bp"
+      ]
+    }
+  ],
+  "missing_values": {
+    "age": 0,
+    "class": 0,
+    "gender": 0,
+    "glucose": 0,
+    "impluse": 0,
+    "kcm": 0,
+    "pressurehight": 0,
+    "pressurelow": 0,
+    "troponin": 0
+  },
+  "numeric_summaries": {
+    "age": {
+      "inferred_type": "integer",
+      "maximum": 103.0,
+      "minimum": 14.0,
+      "unique_count": 75
+    },
+    "gender": {
+      "inferred_type": "integer",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "unique_count": 2
+    },
+    "glucose": {
+      "inferred_type": "float",
+      "maximum": 541.0,
+      "minimum": 35.0,
+      "unique_count": 244
+    },
+    "impluse": {
+      "inferred_type": "integer",
+      "maximum": 1111.0,
+      "minimum": 20.0,
+      "unique_count": 79
+    },
+    "kcm": {
+      "inferred_type": "float",
+      "maximum": 300.0,
+      "minimum": 0.321,
+      "unique_count": 700
+    },
+    "pressurehight": {
+      "inferred_type": "integer",
+      "maximum": 223.0,
+      "minimum": 42.0,
+      "unique_count": 116
+    },
+    "pressurelow": {
+      "inferred_type": "integer",
+      "maximum": 154.0,
+      "minimum": 38.0,
+      "unique_count": 73
+    },
+    "troponin": {
+      "inferred_type": "float",
+      "maximum": 10.3,
+      "minimum": 0.001,
+      "unique_count": 352
+    }
+  },
+  "potential_leakage": {
+    "clinical_caveat": "Troponin and CK-MB are contemporaneous diagnostic biomarkers; high discrimination is not evidence of prospective screening validity.",
+    "explicit_fields": []
+  },
+  "prepared_class_distribution": {
+    "0": 502,
+    "1": 806
+  },
+  "row_count": 1319,
+  "rows_after_duplicate_policy": 1319,
+  "rows_used_for_training_split": 1308,
+  "sha256": "f090acd9aa6ed0df3abd55832a82bf932dcf71987175f68617dd57fb074f4665",
+  "target_column": "class",
+  "target_values": [
+    "negative",
+    "positive"
+  ],
+  "valid_row_count": 1308
+}
