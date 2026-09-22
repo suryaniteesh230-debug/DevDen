@@ -1,0 +1,298 @@
+{
+  "demo_version": "dynamic-priority-demo-1.0.0",
+  "policy_name": "NEUROBOTS Dynamic Priority Policy",
+  "policy_version": "dynamic-priority-1.0.0",
+  "initial_queue": [
+    {
+      "rank": 1,
+      "patient_reference": "QUEUE-A",
+      "patient_id": "78d4dd91-dc66-484f-be8c-1d863cc9c5d4",
+      "encounter_id": "113532a1-73eb-464f-b033-079ae4c618f6",
+      "queue_entry_id": "437bb2c7-2476-4bb9-bbaf-3a69cda800e3",
+      "priority_score": 80.0,
+      "priority_band": "VERY_HIGH",
+      "prototype_esi_level": 2,
+      "cardiac_probability": 1.0,
+      "deterioration_status": "UNKNOWN",
+      "reason_codes": [
+        "PRIORITY-001",
+        "PRIORITY-003",
+        "PRIORITY-005"
+      ]
+    },
+    {
+      "rank": 2,
+      "patient_reference": "QUEUE-C",
+      "patient_id": "936ba319-51eb-4a57-bb59-b7c12d47edb4",
+      "encounter_id": "16f68f42-1d4b-4bcb-ba31-59059facb8dd",
+      "queue_entry_id": "ace9bb0e-e357-45e2-8e0e-70495877a2a1",
+      "priority_score": 78.0,
+      "priority_band": "VERY_HIGH",
+      "prototype_esi_level": 2,
+      "cardiac_probability": 0.105,
+      "deterioration_status": "UNKNOWN",
+      "reason_codes": [
+        "PRIORITY-001",
+        "PRIORITY-004",
+        "PRIORITY-005"
+      ]
+    },
+    {
+      "rank": 3,
+      "patient_reference": "QUEUE-B",
+      "patient_id": "5a476775-0dc2-4607-814c-a9a10381c4a8",
+      "encounter_id": "135ff49d-1a80-44d1-a2d5-b93452a1f4c5",
+      "queue_entry_id": "ecd7d9e9-989c-42f7-b679-180be1ac963c",
+      "priority_score": 75.0,
+      "priority_band": "VERY_HIGH",
+      "prototype_esi_level": 2,
+      "cardiac_probability": 0.051396825396825406,
+      "deterioration_status": "NOT_DETECTED",
+      "reason_codes": [
+        "PRIORITY-001",
+        "PRIORITY-005"
+      ]
+    },
+    {
+      "rank": 4,
+      "patient_reference": "QUEUE-D",
+      "patient_id": "15ce8cb1-a6f0-412c-86e0-8c1e6b4c83fe",
+      "encounter_id": "ea69c89c-9b77-47f5-9229-bbf0effdce6f",
+      "queue_entry_id": "92233a41-905b-46c9-8278-721b28fb6875",
+      "priority_score": 75.0,
+      "priority_band": "VERY_HIGH",
+      "prototype_esi_level": 2,
+      "cardiac_probability": 0.07328571428571427,
+      "deterioration_status": "UNKNOWN",
+      "reason_codes": [
+        "PRIORITY-001",
+        "PRIORITY-005"
+      ]
+    }
+  ],
+  "updated_queue": [
+    {
+      "rank": 1,
+      "patient_reference": "QUEUE-B",
+      "patient_id": "5a476775-0dc2-4607-814c-a9a10381c4a8",
+      "encounter_id": "135ff49d-1a80-44d1-a2d5-b93452a1f4c5",
+      "queue_entry_id": "ecd7d9e9-989c-42f7-b679-180be1ac963c",
+      "priority_score": 90.0,
+      "priority_band": "CRITICAL",
+      "prototype_esi_level": 2,
+      "cardiac_probability": 0.09484126984126982,
+      "deterioration_status": "DETECTED",
+      "reason_codes": [
+        "PRIORITY-001",
+        "PRIORITY-002",
+        "PRIORITY-005"
+      ]
+    },
+    {
+      "rank": 2,
+      "patient_reference": "QUEUE-A",
+      "patient_id": "78d4dd91-dc66-484f-be8c-1d863cc9c5d4",
+      "encounter_id": "113532a1-73eb-464f-b033-079ae4c618f6",
+      "queue_entry_id": "437bb2c7-2476-4bb9-bbaf-3a69cda800e3",
+      "priority_score": 80.0,
+      "priority_band": "VERY_HIGH",
+      "prototype_esi_level": 2,
+      "cardiac_probability": 1.0,
+      "deterioration_status": "UNKNOWN",
+      "reason_codes": [
+        "PRIORITY-001",
+        "PRIORITY-003",
+        "PRIORITY-005"
+      ]
+    },
+    {
+      "rank": 3,
+      "patient_reference": "QUEUE-C",
+      "patient_id": "936ba319-51eb-4a57-bb59-b7c12d47edb4",
+      "encounter_id": "16f68f42-1d4b-4bcb-ba31-59059facb8dd",
+      "queue_entry_id": "ace9bb0e-e357-45e2-8e0e-70495877a2a1",
+      "priority_score": 78.0,
+      "priority_band": "VERY_HIGH",
+      "prototype_esi_level": 2,
+      "cardiac_probability": 0.105,
+      "deterioration_status": "UNKNOWN",
+      "reason_codes": [
+        "PRIORITY-001",
+        "PRIORITY-004",
+        "PRIORITY-005"
+      ]
+    },
+    {
+      "rank": 4,
+      "patient_reference": "QUEUE-D",
+      "patient_id": "15ce8cb1-a6f0-412c-86e0-8c1e6b4c83fe",
+      "encounter_id": "ea69c89c-9b77-47f5-9229-bbf0effdce6f",
+      "queue_entry_id": "92233a41-905b-46c9-8278-721b28fb6875",
+      "priority_score": 75.0,
+      "priority_band": "VERY_HIGH",
+      "prototype_esi_level": 2,
+      "cardiac_probability": 0.07328571428571427,
+      "deterioration_status": "UNKNOWN",
+      "reason_codes": [
+        "PRIORITY-001",
+        "PRIORITY-005"
+      ]
+    }
+  ],
+  "reassessment": {
+    "patient_reference": "QUEUE-B",
+    "previous_triage_assessment_id": "1618d81c-0613-465d-b519-b94c38fde055",
+    "new_triage_assessment_id": "076ee894-ac3d-442a-9d29-a35de733f4c5",
+    "previous_priority_score": 75.0,
+    "new_priority_score": 90.0,
+    "deterioration_status": "DETECTED",
+    "new_vital_id": "332177b6-45e8-42bf-9208-5ec837939da5",
+    "priority_rule_trace": [
+      {
+        "id": "PRIORITY-001",
+        "version": "1.0.0",
+        "triggered": true,
+        "inputs": {
+          "severity_level": "PROTOTYPE_ESI_2",
+          "prototype_esi_level": 2,
+          "triage_policy": "NEUROBOTS Prototype ESI Subset",
+          "triage_policy_version": "prototype-esi-subset-1.0.0"
+        },
+        "contribution": 75.0,
+        "impact": "SCORE",
+        "explanation": "Emergency severity supplies the dominant base score."
+      },
+      {
+        "id": "PRIORITY-002",
+        "version": "1.0.0",
+        "triggered": true,
+        "inputs": {
+          "status": "DETECTED",
+          "policy_version": "vital-deterioration-1.0.0",
+          "reason": "One or more supported vital changes crossed a configured threshold",
+          "signals": [
+            {
+              "id": "HEART_RATE_RISE",
+              "field": "heart_rate",
+              "previous": 80.0,
+              "latest": 108.0,
+              "delta": 28.0,
+              "threshold": 20.0,
+              "direction": "RISE"
+            },
+            {
+              "id": "SYSTOLIC_BP_DROP",
+              "field": "systolic_bp",
+              "previous": 126.0,
+              "latest": 100.0,
+              "delta": -26.0,
+              "threshold": 20.0,
+              "direction": "DROP"
+            },
+            {
+              "id": "SPO2_DROP",
+              "field": "spo2",
+              "previous": 98.0,
+              "latest": 94.0,
+              "delta": -4.0,
+              "threshold": 3.0,
+              "direction": "DROP"
+            },
+            {
+              "id": "RESPIRATORY_RATE_RISE",
+              "field": "respiratory_rate",
+              "previous": 17.0,
+              "latest": 24.0,
+              "delta": 7.0,
+              "threshold": 6.0,
+              "direction": "RISE"
+            }
+          ],
+          "previous_vital_id": "f9ead701-0908-4341-b25a-e94363447e06",
+          "latest_vital_id": "332177b6-45e8-42bf-9208-5ec837939da5",
+          "previous_measured_at": "2026-08-07T19:37:31",
+          "latest_measured_at": "2026-08-07T19:43:31",
+          "comparison": {
+            "heart_rate": {
+              "previous": 80.0,
+              "latest": 108.0,
+              "delta": 28.0
+            },
+            "systolic_bp": {
+              "previous": 126.0,
+              "latest": 100.0,
+              "delta": -26.0
+            },
+            "spo2": {
+              "previous": 98.0,
+              "latest": 94.0,
+              "delta": -4.0
+            },
+            "respiratory_rate": {
+              "previous": 17.0,
+              "latest": 24.0,
+              "delta": 7.0
+            }
+          },
+          "thresholds": {
+            "heart_rate_rise": 20.0,
+            "systolic_bp_drop": 20.0,
+            "spo2_drop": 3.0,
+            "respiratory_rate_rise": 6.0
+          }
+        },
+        "contribution": 15.0,
+        "impact": "SCORE",
+        "explanation": "A supported repeated-vital change increased operational urgency."
+      },
+      {
+        "id": "PRIORITY-003",
+        "version": "1.0.0",
+        "triggered": false,
+        "inputs": {
+          "status": "SUCCESS",
+          "predicted_class": 0,
+          "probability": 0.09484126984126982,
+          "model_version": "cardiac-risk-rf-1.0.0",
+          "support_threshold": 0.8
+        },
+        "contribution": 0.0,
+        "impact": "NONE",
+        "explanation": "Cardiac output did not meet the fixed supporting threshold."
+      },
+      {
+        "id": "PRIORITY-004",
+        "version": "1.0.0",
+        "triggered": false,
+        "inputs": {
+          "waiting_since": "2026-08-07T19:19:31+00:00",
+          "calculated_at": "2026-08-07T19:44:31.676933+00:00",
+          "waiting_minutes": 25.011,
+          "minutes_per_point": 30,
+          "maximum_points": 5
+        },
+        "contribution": 0.0,
+        "impact": "NONE",
+        "explanation": "Waiting adds one point per 30 minutes, capped at five points."
+      },
+      {
+        "id": "PRIORITY-005",
+        "version": "1.0.0",
+        "triggered": true,
+        "inputs": {
+          "provisional": true,
+          "missing_information": [
+            "immediate_life_saving_intervention_need",
+            "consciousness_level",
+            "clinician_high_risk_assessment",
+            "anticipated_resource_count",
+            "symptom_onset"
+          ]
+        },
+        "contribution": 0.0,
+        "impact": "FLAG",
+        "explanation": "Provisional status is retained as an operational flag without reducing priority."
+      }
+    ]
+  }
+}

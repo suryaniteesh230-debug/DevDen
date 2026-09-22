@@ -1,0 +1,124 @@
+.dashboard {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+.dashboard-header {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(5, 26, 15, 0.2) 100%);
+  border: 2px solid rgba(0, 255, 65, 0.3);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+}
+
+.header-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #00ff41 0%, #00dd33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.header-content p {
+  color: rgba(0, 255, 65, 0.7);
+  font-size: 1.1rem;
+}
+
+.alert-system {
+  grid-column: 1 / -1;
+}
+
+.communication-toggle {
+  grid-column: 1 / -1;
+}
+
+.network-logs {
+  grid-column: 1 / -1;
+}
+
+.agent-panels {
+  grid-column: 1 / -1;
+}
+
+.agent-documentation {
+  grid-column: 1 / -1;
+}
+
+.doc-toggle {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.doc-button {
+  padding: 12px 30px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #00ff41 0%, #00dd33 100%);
+  border: 2px solid #00ff41;
+  border-radius: 25px;
+  color: #000000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.doc-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.8), inset 0 0 15px rgba(0, 255, 65, 0.3);
+}
+
+@media (max-width: 1200px) {
+  .dashboard {
+    padding: 15px;
+  }
+
+  .dashboard-grid {
+    gap: 15px;
+  }
+
+  .dashboard-header {
+    padding: 20px;
+  }
+
+  .header-content h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 10px;
+  }
+
+  .dashboard-header {
+    padding: 15px;
+  }
+
+  .header-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .header-content p {
+    font-size: 0.9rem;
+  }
+}

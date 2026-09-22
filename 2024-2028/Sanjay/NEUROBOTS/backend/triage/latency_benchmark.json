@@ -1,0 +1,32 @@
+{
+  "cardiac_model_version": "cardiac-risk-rf-1.0.0",
+  "cardiac_plus_triage_tools": {
+    "maximum_ms": 54.77317700024287,
+    "mean_ms": 14.63589361195045,
+    "minimum_ms": 13.598831999843242,
+    "p50_ms": 14.457983499596594,
+    "p95_ms": 15.515466200577064,
+    "repetitions": 500
+  },
+  "combined_target_met": true,
+  "combined_target_ms": 500,
+  "excluded_from_measurement": [
+    "training",
+    "HTTP overhead",
+    "LangGraph execution",
+    "database persistence",
+    "SHAP explanation"
+  ],
+  "measured_at": "2026-08-07T18:21:19.024617+00:00",
+  "policy_name": "NEUROBOTS Prototype ESI Subset",
+  "policy_version": "prototype-esi-subset-1.0.0",
+  "triage_tool": {
+    "maximum_ms": 0.035202001527068205,
+    "mean_ms": 0.010633856960339472,
+    "minimum_ms": 0.008480999895255081,
+    "p50_ms": 0.009338499694422353,
+    "p95_ms": 0.015658899064874277,
+    "repetitions": 1000
+  },
+  "warmup_repetitions": 20
+}

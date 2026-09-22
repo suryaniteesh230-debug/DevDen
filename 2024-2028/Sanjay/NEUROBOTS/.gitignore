@@ -1,0 +1,30 @@
+# Python environments and caches
+.venv/
+backend/.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Runtime persistence and generated clinical/ML data
+*.db
+*.sqlite
+*.sqlite3
+backend/data/raw/
+backend/ml/artifacts/*
+!backend/ml/artifacts/cardiac_risk_random_forest_v1.0.0.joblib
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/

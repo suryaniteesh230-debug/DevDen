@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: sahayi
+    runtime: docker
+    plan: free
+    branch: feat/sahayi-deployment
+    autoDeployTrigger: off
+    healthCheckPath: /api/v1/health
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: SAHAYI_AGENT_ENABLED
+        value: "false"
+      - key: SAHAYI_AGENT_PROVIDER
+        value: groq
+      - key: SAHAYI_AGENT_MODEL
+        value: openai/gpt-oss-120b

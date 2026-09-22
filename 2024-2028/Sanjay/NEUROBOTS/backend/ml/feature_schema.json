@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "schema_name": "cardiac_risk_features",
+  "dataset": {
+    "filename": "Heart Attack.csv",
+    "sha256": "f090acd9aa6ed0df3abd55832a82bf932dcf71987175f68617dd57fb074f4665",
+    "identifier": "doi:10.17632/65gxgy2nmg.2",
+    "title": "An Extensive Dataset for the Heart Disease Classification System",
+    "target_column": "class",
+    "target_encoding": {
+      "negative": 0,
+      "positive": 1
+    }
+  },
+  "feature_order": [
+    "age",
+    "gender",
+    "heart_rate",
+    "systolic_bp",
+    "diastolic_bp",
+    "blood_sugar",
+    "ck_mb",
+    "troponin"
+  ],
+  "features": [
+    {
+      "raw_column": "age",
+      "internal_name": "age",
+      "meaning": "Age at the encounter",
+      "data_type": "integer",
+      "expected_unit": "years",
+      "unit_evidence": "The source describes this field as age.",
+      "valid_range": {"exclusive_minimum": 0, "maximum": 120}
+    },
+    {
+      "raw_column": "gender",
+      "internal_name": "gender",
+      "meaning": "Binary gender encoding supplied by the dataset",
+      "data_type": "integer",
+      "expected_unit": null,
+      "encoding": {"female": 0, "male": 1},
+      "valid_values": [0, 1]
+    },
+    {
+      "raw_column": "impluse",
+      "internal_name": "heart_rate",
+      "meaning": "Heart rate",
+      "data_type": "integer",
+      "expected_unit": null,
+      "unit_evidence": "The source names the measurement but does not specify a unit.",
+      "valid_range": {"exclusive_minimum": 0, "maximum": 300}
+    },
+    {
+      "raw_column": "pressurehight",
+      "internal_name": "systolic_bp",
+      "meaning": "Systolic blood pressure",
+      "data_type": "integer",
+      "expected_unit": null,
+      "unit_evidence": "The source names the measurement but does not specify a unit.",
+      "valid_range": {"exclusive_minimum": 0, "maximum": 300}
+    },
+    {
+      "raw_column": "pressurelow",
+      "internal_name": "diastolic_bp",
+      "meaning": "Diastolic blood pressure",
+      "data_type": "integer",
+      "expected_unit": null,
+      "unit_evidence": "The source names the measurement but does not specify a unit.",
+      "valid_range": {"exclusive_minimum": 0, "maximum": 250}
+    },
+    {
+      "raw_column": "glucose",
+      "internal_name": "blood_sugar",
+      "meaning": "Blood glucose measurement",
+      "data_type": "float",
+      "expected_unit": null,
+      "unit_evidence": "No unit is specified; published metadata conflicts with the continuous values in the file.",
+      "valid_range": {"exclusive_minimum": 0}
+    },
+    {
+      "raw_column": "kcm",
+      "internal_name": "ck_mb",
+      "meaning": "CK-MB measurement",
+      "data_type": "float",
+      "expected_unit": null,
+      "unit_evidence": "The source names CK-MB but does not specify a unit.",
+      "valid_range": {"minimum": 0}
+    },
+    {
+      "raw_column": "troponin",
+      "internal_name": "troponin",
+      "meaning": "Troponin measurement",
+      "data_type": "float",
+      "expected_unit": null,
+      "unit_evidence": "The source names troponin but does not specify assay type or unit.",
+      "valid_range": {"minimum": 0}
+    }
+  ],
+  "cross_field_rules": [
+    {
+      "rule": "diastolic_bp <= systolic_bp",
+      "reason": "Reject structurally inconsistent blood-pressure rows."
+    }
+  ],
+  "preparation": {
+    "duplicate_policy": "Drop exact duplicate rows, retaining the first occurrence.",
+    "invalid_row_policy": "Exclude rows that violate declared ranges or cross-field rules before train/test splitting.",
+    "missing_value_policy": "Training fails if any required feature or target is missing; runtime inference returns INCOMPLETE_INPUT.",
+    "unit_conversion_policy": "No unit conversion is performed because source units are not documented reliably."
+  },
+  "limitations": [
+    "The source does not provide dependable measurement units or assay details.",
+    "The glucose metadata is inconsistent with the continuous raw values; values remain continuous.",
+    "Troponin and CK-MB are contemporaneous diagnostic biomarkers, so performance is not evidence of prospective screening validity.",
+    "The dataset and resulting model have not undergone clinical validation for real-world deployment."
+  ]
+}

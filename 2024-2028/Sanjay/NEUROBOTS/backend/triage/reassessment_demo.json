@@ -1,0 +1,1116 @@
+{
+  "endpoint": "POST /api/encounters/8bd266f7-ba85-4706-9fd9-5fbf1cec8775/workflow",
+  "first_assessment": {
+    "agent_trace": [
+      {
+        "agent": "intake",
+        "completed_at": "2026-08-07T18:22:16.597695+00:00",
+        "duration_ms": 5.699,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.592009+00:00",
+        "status": "SUCCESS",
+        "summary": "Verified workflow identifiers and loaded the current encounter",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.598247+00:00",
+        "duration_ms": 0.023,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.598233+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected PATIENT_RESOLUTION: patient_resolution has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "patient_resolution",
+        "completed_at": "2026-08-07T18:22:16.601628+00:00",
+        "duration_ms": 2.918,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.598724+00:00",
+        "status": "SUCCESS",
+        "summary": "Resolved patient with no prior encounters",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.602002+00:00",
+        "duration_ms": 0.019,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.601989+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected MULTIMODAL: multimodal has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "multimodal",
+        "capability_status": {
+          "medical_image_interpretation": {
+            "reason": "No medical-image interpretation model is available",
+            "status": "PENDING_CAPABILITY"
+          },
+          "ocr_extraction": {
+            "reason": "No OCR model or adapter is available",
+            "status": "PENDING_CAPABILITY"
+          },
+          "speech_transcription": {
+            "reason": "No speech transcription model or adapter is available",
+            "status": "PENDING_CAPABILITY"
+          },
+          "structured_observation_ingestion": {
+            "details": {
+              "source_counts": {
+                "MANUAL": 6,
+                "SIMULATOR": 1
+              }
+            },
+            "reason": "Structured encounter observations are available",
+            "status": "AVAILABLE"
+          },
+          "wearable_telemetry": {
+            "reason": "Wearable provenance is supported, but a telemetry adapter is not implemented",
+            "status": "PENDING_CAPABILITY"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.602451+00:00",
+        "duration_ms": 0.023,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.602433+00:00",
+        "status": "PARTIAL",
+        "summary": "Recognized 7 structured observations; unimplemented multimodal inputs remain pending",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.602849+00:00",
+        "duration_ms": 0.014,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.602841+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected CLINICAL_NLP: clinical_nlp has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "clinical_nlp",
+        "capability_status": {
+          "free_text_clinical_extraction": {
+            "reason": "No clinical NLP or LLM extraction system is available",
+            "status": "PENDING_CAPABILITY"
+          },
+          "structured_symptom_normalization": {
+            "reason": "Stored symptom records are normalized with deterministic Python",
+            "status": "AVAILABLE"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.603265+00:00",
+        "duration_ms": 0.021,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.603250+00:00",
+        "status": "SUCCESS",
+        "summary": "Deterministically normalized 3 structured symptoms",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.603589+00:00",
+        "duration_ms": 0.015,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.603580+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected DATA_FUSION: data_fusion has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "data_fusion",
+        "completed_at": "2026-08-07T18:22:16.604091+00:00",
+        "duration_ms": 0.091,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.604006+00:00",
+        "status": "SUCCESS",
+        "summary": "Fused patient context, 1 vital readings, and 3 lab results",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.604382+00:00",
+        "duration_ms": 0.015,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.604372+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected TRIAGE_RISK: triage_risk has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "triage_risk",
+        "capability_status": {
+          "emergency_triage": {
+            "details": {
+              "assessment_id": "494988ff-5c8a-45ea-9c99-bfa78c8fe860",
+              "policy_name": "NEUROBOTS Prototype ESI Subset",
+              "policy_version": "prototype-esi-subset-1.0.0",
+              "provisional": true
+            },
+            "reason": "Versioned deterministic prototype triage subset evaluated",
+            "status": "AVAILABLE"
+          },
+          "heart_attack_risk_model": {
+            "details": {
+              "model_version": "cardiac-risk-rf-1.0.0",
+              "prediction_id": "decc8e4e-949f-43a7-94b5-3f13a9904288"
+            },
+            "reason": "Versioned local cardiac model inference completed",
+            "status": "AVAILABLE"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.683288+00:00",
+        "duration_ms": 78.5,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.604797+00:00",
+        "status": "SUCCESS",
+        "summary": "Generated independent cardiac-risk and provisional triage assessments",
+        "warnings": [
+          "Dataset source units are not documented reliably; values were not converted."
+        ]
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.683697+00:00",
+        "duration_ms": 0.019,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.683684+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected CLINICAL_REASONING: clinical_reasoning has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "clinical_reasoning",
+        "capability_status": {
+          "clinical_pathways": {
+            "reason": "RAG, knowledge-graph, and clinical reasoning systems are not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "differential_reasoning": {
+            "reason": "RAG, knowledge-graph, and clinical reasoning systems are not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "medical_knowledge_graph": {
+            "reason": "RAG, knowledge-graph, and clinical reasoning systems are not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "rag": {
+            "reason": "RAG, knowledge-graph, and clinical reasoning systems are not implemented",
+            "status": "PENDING_CAPABILITY"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.684136+00:00",
+        "duration_ms": 0.015,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.684127+00:00",
+        "status": "PENDING_CAPABILITY",
+        "summary": "Clinical reasoning remains pending; no recommendations were fabricated",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.684408+00:00",
+        "duration_ms": 0.014,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.684399+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected SAFETY: safety has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "safety",
+        "capability_status": {
+          "contraindications": {
+            "reason": "Contraindication knowledge sources are unavailable",
+            "status": "PENDING_CAPABILITY"
+          },
+          "cross_agent_conflict_detection": {
+            "reason": "Cross-agent clinical conflict rules are not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "deterministic_completeness_checks": {
+            "reason": "Checks use only current structured state",
+            "status": "AVAILABLE"
+          },
+          "drug_interactions": {
+            "reason": "Medication data and interaction knowledge sources are unavailable",
+            "status": "PENDING_CAPABILITY"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.684809+00:00",
+        "duration_ms": 0.021,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.684794+00:00",
+        "status": "PARTIAL",
+        "summary": "Completed deterministic safety checks with 3 findings",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.685088+00:00",
+        "duration_ms": 0.014,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.685079+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected XAI: xai has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "xai",
+        "capability_status": {
+          "clinical_evidence": {
+            "reason": "Clinical evidence retrieval is not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "counterfactual": {
+            "reason": "Counterfactual explanation is not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "decision_trace": {
+            "details": {
+              "entry_count": 16
+            },
+            "reason": "Generated deterministically from actual workflow trace entries",
+            "status": "AVAILABLE"
+          },
+          "imaging_saliency": {
+            "reason": "Imaging saliency is not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "shap": {
+            "details": {
+              "explanation_id": "572d98dc-15dc-4888-8795-1759e3ddb0cb"
+            },
+            "reason": "Tree SHAP model feature contributions were generated",
+            "status": "AVAILABLE"
+          },
+          "triage_rule_trace": {
+            "details": {
+              "policy_version": "prototype-esi-subset-1.0.0"
+            },
+            "reason": "Deterministic triage policy trace is separate from model contributions",
+            "status": "AVAILABLE"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.701262+00:00",
+        "duration_ms": 15.684,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.685590+00:00",
+        "status": "PARTIAL",
+        "summary": "Generated and persisted SHAP model feature contributions and decision trace",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.701695+00:00",
+        "duration_ms": 0.021,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.701679+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected PRIORITY: priority has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "priority",
+        "capability_status": {
+          "dynamic_priority_queue": {
+            "reason": "No valid triage/risk priority exists and dynamic queue capability is not implemented",
+            "status": "PENDING_CAPABILITY"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.702172+00:00",
+        "duration_ms": 0.012,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.702165+00:00",
+        "status": "PENDING_CAPABILITY",
+        "summary": "No clinical or queue priority was fabricated",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.702449+00:00",
+        "duration_ms": 0.02,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.702433+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected FINISH: All specialist agents have completed an execution attempt",
+        "warnings": []
+      }
+    ],
+    "cardiac_risk": {
+      "model_name": "RandomForestClassifier",
+      "model_version": "cardiac-risk-rf-1.0.0",
+      "predicted_class": 1,
+      "prediction_id": "decc8e4e-949f-43a7-94b5-3f13a9904288",
+      "probability": 0.9855555555555554
+    },
+    "model_contributions": {
+      "method": "TreeSHAP",
+      "top_contributors": [
+        {
+          "direction": "INCREASES_POSITIVE_CLASS_OUTPUT",
+          "feature": "troponin",
+          "magnitude": 0.2760476879143436,
+          "observed_value": 0.18,
+          "rank": 1,
+          "shap_value": 0.2760476879143436
+        },
+        {
+          "direction": "INCREASES_POSITIVE_CLASS_OUTPUT",
+          "feature": "ck_mb",
+          "magnitude": 0.22822087007930125,
+          "observed_value": 8.4,
+          "rank": 2,
+          "shap_value": 0.22822087007930125
+        },
+        {
+          "direction": "DECREASES_POSITIVE_CLASS_OUTPUT",
+          "feature": "gender",
+          "magnitude": 0.012556279363776273,
+          "observed_value": 0.0,
+          "rank": 3,
+          "shap_value": -0.012556279363776273
+        }
+      ]
+    },
+    "priority": {
+      "reason": "No valid triage/risk priority exists and dynamic queue capability is not implemented",
+      "status": "PENDING_CAPABILITY",
+      "valid_triage_available": false,
+      "value": null
+    },
+    "triage": {
+      "assessment_id": "494988ff-5c8a-45ea-9c99-bfa78c8fe860",
+      "disclaimer": "Hackathon clinical decision-support prototype only; not clinically validated for real-world emergency triage and does not replace clinician assessment.",
+      "input_snapshot": {
+        "cardiac_risk": {
+          "model_version": "cardiac-risk-rf-1.0.0",
+          "predicted_class": 1,
+          "probability": 0.9855555555555554,
+          "status": "SUCCESS"
+        },
+        "encounter": {
+          "id": "8bd266f7-ba85-4706-9fd9-5fbf1cec8775",
+          "started_at": "2026-08-07T08:00:00"
+        },
+        "latest_vitals": {
+          "diastolic_bp": 90.0,
+          "encounter_id": "8bd266f7-ba85-4706-9fd9-5fbf1cec8775",
+          "heart_rate": 108.0,
+          "id": "c8fc09c8-af57-4bf0-9fff-9fde2aed62bc",
+          "measured_at": "2026-08-07T08:05:00",
+          "respiratory_rate": 22.0,
+          "source": "SIMULATOR",
+          "spo2": 95.0,
+          "systolic_bp": 148.0,
+          "temperature": 37.1
+        },
+        "patient": {
+          "age_at_encounter": 48,
+          "date_of_birth": "1978-04-18",
+          "id": "2a275aee-7b9d-471a-a38d-916116d4f5b1"
+        },
+        "symptoms": [
+          {
+            "duration": "30 minutes",
+            "id": "081e8590-29e1-42c5-8a40-f11b00121aca",
+            "name": "chest pain",
+            "onset": "2026-08-07T07:30:00",
+            "present": true,
+            "provenance": {
+              "original_name": "chest pain",
+              "source": "MANUAL"
+            },
+            "severity": 8,
+            "source": "MANUAL"
+          },
+          {
+            "duration": null,
+            "id": "63c75e85-5a2f-46e4-b8c7-97c93279339d",
+            "name": "shortness of breath",
+            "onset": null,
+            "present": true,
+            "provenance": {
+              "original_name": "shortness of breath",
+              "source": "MANUAL"
+            },
+            "severity": 7,
+            "source": "MANUAL"
+          },
+          {
+            "duration": null,
+            "id": "80a5b06e-8781-4719-a603-2e69329e3cbb",
+            "name": "sweating",
+            "onset": null,
+            "present": true,
+            "provenance": {
+              "original_name": "sweating",
+              "source": "MANUAL"
+            },
+            "severity": 6,
+            "source": "MANUAL"
+          }
+        ]
+      },
+      "missing_information": [
+        "immediate_life_saving_intervention_need",
+        "consciousness_level",
+        "clinician_high_risk_assessment",
+        "anticipated_resource_count"
+      ],
+      "policy_name": "NEUROBOTS Prototype ESI Subset",
+      "policy_version": "prototype-esi-subset-1.0.0",
+      "prototype_esi_level": 2,
+      "provisional": true,
+      "rule_hits": [
+        {
+          "description": "Adult ESI-v5 high-risk vital-sign screen prompts escalation reassessment.",
+          "effect": "PROVISIONAL_LEVEL_2_SIGNAL",
+          "id": "TRIAGE-001",
+          "inputs_used": {
+            "age": 48,
+            "heart_rate": 108.0,
+            "respiratory_rate": 22.0,
+            "spo2": 95.0,
+            "thresholds": {
+              "heart_rate_gt": 100,
+              "respiratory_rate_gt": 20,
+              "spo2_lt": 92
+            }
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        },
+        {
+          "description": "High-risk symptom cluster: current chest pain with dyspnea or sweating.",
+          "effect": "PROVISIONAL_LEVEL_2_SIGNAL",
+          "id": "TRIAGE-002",
+          "inputs_used": {
+            "chest_pain": true,
+            "shortness_of_breath": true,
+            "sweating": true
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        },
+        {
+          "description": "Reported symptom severity of 7/10 or greater is a consideration, not an automatic level assignment.",
+          "effect": "SUPPORTING_SIGNAL_ONLY",
+          "id": "TRIAGE-003",
+          "inputs_used": {
+            "reported_severities": [
+              8,
+              7,
+              6
+            ]
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        },
+        {
+          "description": "High cardiac-model output is recorded as supporting context only.",
+          "effect": "SUPPORTING_SIGNAL_ONLY",
+          "id": "TRIAGE-004",
+          "inputs_used": {
+            "model_version": "cardiac-risk-rf-1.0.0",
+            "predicted_class": 1,
+            "probability": 0.9855555555555554,
+            "status": "SUCCESS",
+            "threshold": 0.8
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        },
+        {
+          "description": "Missing full-ESI inputs require a provisional, limited assessment.",
+          "effect": "MARK_PROVISIONAL",
+          "id": "TRIAGE-005",
+          "inputs_used": {
+            "missing_information": [
+              "immediate_life_saving_intervention_need",
+              "consciousness_level",
+              "clinician_high_risk_assessment",
+              "anticipated_resource_count"
+            ]
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        }
+      ],
+      "severity_level": "PROTOTYPE_ESI_2"
+    },
+    "workflow_id": "30594188-0f0f-4315-8131-e0963209417a"
+  },
+  "first_vitals_id": "c8fc09c8-af57-4bf0-9fff-9fde2aed62bc",
+  "persisted_history": {
+    "risk_prediction_ids": [
+      "decc8e4e-949f-43a7-94b5-3f13a9904288",
+      "d062d61b-6b58-439d-a71e-8717f1798182"
+    ],
+    "triage_assessments": [
+      {
+        "id": "494988ff-5c8a-45ea-9c99-bfa78c8fe860",
+        "policy_version": "prototype-esi-subset-1.0.0",
+        "provisional": true,
+        "severity_level": "PROTOTYPE_ESI_2",
+        "vitals_id": "c8fc09c8-af57-4bf0-9fff-9fde2aed62bc"
+      },
+      {
+        "id": "802d56ac-7743-4b9b-bc75-e207dfae834f",
+        "policy_version": "prototype-esi-subset-1.0.0",
+        "provisional": true,
+        "severity_level": "PROTOTYPE_ESI_2",
+        "vitals_id": "cad5f481-5f69-4f35-85b9-0cd9713b64e4"
+      }
+    ]
+  },
+  "second_assessment": {
+    "agent_trace": [
+      {
+        "agent": "intake",
+        "completed_at": "2026-08-07T18:22:16.715828+00:00",
+        "duration_ms": 2.292,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.713549+00:00",
+        "status": "SUCCESS",
+        "summary": "Verified workflow identifiers and loaded the current encounter",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.716233+00:00",
+        "duration_ms": 0.015,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.716223+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected PATIENT_RESOLUTION: patient_resolution has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "patient_resolution",
+        "completed_at": "2026-08-07T18:22:16.718884+00:00",
+        "duration_ms": 2.252,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.716644+00:00",
+        "status": "SUCCESS",
+        "summary": "Resolved patient with no prior encounters",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.719260+00:00",
+        "duration_ms": 0.017,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.719249+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected MULTIMODAL: multimodal has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "multimodal",
+        "capability_status": {
+          "medical_image_interpretation": {
+            "reason": "No medical-image interpretation model is available",
+            "status": "PENDING_CAPABILITY"
+          },
+          "ocr_extraction": {
+            "reason": "No OCR model or adapter is available",
+            "status": "PENDING_CAPABILITY"
+          },
+          "speech_transcription": {
+            "reason": "No speech transcription model or adapter is available",
+            "status": "PENDING_CAPABILITY"
+          },
+          "structured_observation_ingestion": {
+            "details": {
+              "source_counts": {
+                "MANUAL": 6,
+                "SIMULATOR": 2
+              }
+            },
+            "reason": "Structured encounter observations are available",
+            "status": "AVAILABLE"
+          },
+          "wearable_telemetry": {
+            "reason": "Wearable provenance is supported, but a telemetry adapter is not implemented",
+            "status": "PENDING_CAPABILITY"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.719809+00:00",
+        "duration_ms": 0.023,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.719792+00:00",
+        "status": "PARTIAL",
+        "summary": "Recognized 8 structured observations; unimplemented multimodal inputs remain pending",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.720082+00:00",
+        "duration_ms": 0.013,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.720074+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected CLINICAL_NLP: clinical_nlp has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "clinical_nlp",
+        "capability_status": {
+          "free_text_clinical_extraction": {
+            "reason": "No clinical NLP or LLM extraction system is available",
+            "status": "PENDING_CAPABILITY"
+          },
+          "structured_symptom_normalization": {
+            "reason": "Stored symptom records are normalized with deterministic Python",
+            "status": "AVAILABLE"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.720531+00:00",
+        "duration_ms": 0.02,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.720517+00:00",
+        "status": "SUCCESS",
+        "summary": "Deterministically normalized 3 structured symptoms",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.720805+00:00",
+        "duration_ms": 0.013,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.720797+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected DATA_FUSION: data_fusion has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "data_fusion",
+        "completed_at": "2026-08-07T18:22:16.721217+00:00",
+        "duration_ms": 0.028,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.721195+00:00",
+        "status": "SUCCESS",
+        "summary": "Fused patient context, 2 vital readings, and 3 lab results",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.721534+00:00",
+        "duration_ms": 0.019,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.721522+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected TRIAGE_RISK: triage_risk has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "triage_risk",
+        "capability_status": {
+          "emergency_triage": {
+            "details": {
+              "assessment_id": "802d56ac-7743-4b9b-bc75-e207dfae834f",
+              "policy_name": "NEUROBOTS Prototype ESI Subset",
+              "policy_version": "prototype-esi-subset-1.0.0",
+              "provisional": true
+            },
+            "reason": "Versioned deterministic prototype triage subset evaluated",
+            "status": "AVAILABLE"
+          },
+          "heart_attack_risk_model": {
+            "details": {
+              "model_version": "cardiac-risk-rf-1.0.0",
+              "prediction_id": "d062d61b-6b58-439d-a71e-8717f1798182"
+            },
+            "reason": "Versioned local cardiac model inference completed",
+            "status": "AVAILABLE"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.743345+00:00",
+        "duration_ms": 21.396,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.721957+00:00",
+        "status": "SUCCESS",
+        "summary": "Generated independent cardiac-risk and provisional triage assessments",
+        "warnings": [
+          "Dataset source units are not documented reliably; values were not converted."
+        ]
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.743738+00:00",
+        "duration_ms": 0.017,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.743727+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected CLINICAL_REASONING: clinical_reasoning has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "clinical_reasoning",
+        "capability_status": {
+          "clinical_pathways": {
+            "reason": "RAG, knowledge-graph, and clinical reasoning systems are not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "differential_reasoning": {
+            "reason": "RAG, knowledge-graph, and clinical reasoning systems are not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "medical_knowledge_graph": {
+            "reason": "RAG, knowledge-graph, and clinical reasoning systems are not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "rag": {
+            "reason": "RAG, knowledge-graph, and clinical reasoning systems are not implemented",
+            "status": "PENDING_CAPABILITY"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.744167+00:00",
+        "duration_ms": 0.013,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.744159+00:00",
+        "status": "PENDING_CAPABILITY",
+        "summary": "Clinical reasoning remains pending; no recommendations were fabricated",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.744441+00:00",
+        "duration_ms": 0.019,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.744430+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected SAFETY: safety has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "safety",
+        "capability_status": {
+          "contraindications": {
+            "reason": "Contraindication knowledge sources are unavailable",
+            "status": "PENDING_CAPABILITY"
+          },
+          "cross_agent_conflict_detection": {
+            "reason": "Cross-agent clinical conflict rules are not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "deterministic_completeness_checks": {
+            "reason": "Checks use only current structured state",
+            "status": "AVAILABLE"
+          },
+          "drug_interactions": {
+            "reason": "Medication data and interaction knowledge sources are unavailable",
+            "status": "PENDING_CAPABILITY"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.744879+00:00",
+        "duration_ms": 0.029,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.744858+00:00",
+        "status": "PARTIAL",
+        "summary": "Completed deterministic safety checks with 3 findings",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.745261+00:00",
+        "duration_ms": 0.019,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.745249+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected XAI: xai has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "xai",
+        "capability_status": {
+          "clinical_evidence": {
+            "reason": "Clinical evidence retrieval is not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "counterfactual": {
+            "reason": "Counterfactual explanation is not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "decision_trace": {
+            "details": {
+              "entry_count": 16
+            },
+            "reason": "Generated deterministically from actual workflow trace entries",
+            "status": "AVAILABLE"
+          },
+          "imaging_saliency": {
+            "reason": "Imaging saliency is not implemented",
+            "status": "PENDING_CAPABILITY"
+          },
+          "shap": {
+            "details": {
+              "explanation_id": "b21d0c41-84e5-47e0-914d-12c5e10100cb"
+            },
+            "reason": "Tree SHAP model feature contributions were generated",
+            "status": "AVAILABLE"
+          },
+          "triage_rule_trace": {
+            "details": {
+              "policy_version": "prototype-esi-subset-1.0.0"
+            },
+            "reason": "Deterministic triage policy trace is separate from model contributions",
+            "status": "AVAILABLE"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.760228+00:00",
+        "duration_ms": 14.458,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.745782+00:00",
+        "status": "PARTIAL",
+        "summary": "Generated and persisted SHAP model feature contributions and decision trace",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.760623+00:00",
+        "duration_ms": 0.018,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.760610+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected PRIORITY: priority has not yet completed an execution attempt",
+        "warnings": []
+      },
+      {
+        "agent": "priority",
+        "capability_status": {
+          "dynamic_priority_queue": {
+            "reason": "No valid triage/risk priority exists and dynamic queue capability is not implemented",
+            "status": "PENDING_CAPABILITY"
+          }
+        },
+        "completed_at": "2026-08-07T18:22:16.761179+00:00",
+        "duration_ms": 0.013,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.761172+00:00",
+        "status": "PENDING_CAPABILITY",
+        "summary": "No clinical or queue priority was fabricated",
+        "warnings": []
+      },
+      {
+        "agent": "supervisor",
+        "completed_at": "2026-08-07T18:22:16.761454+00:00",
+        "duration_ms": 0.02,
+        "errors": [],
+        "started_at": "2026-08-07T18:22:16.761439+00:00",
+        "status": "SUCCESS",
+        "summary": "Selected FINISH: All specialist agents have completed an execution attempt",
+        "warnings": []
+      }
+    ],
+    "cardiac_risk": {
+      "model_name": "RandomForestClassifier",
+      "model_version": "cardiac-risk-rf-1.0.0",
+      "predicted_class": 1,
+      "prediction_id": "d062d61b-6b58-439d-a71e-8717f1798182",
+      "probability": 0.9930555555555555
+    },
+    "model_contributions": {
+      "method": "TreeSHAP",
+      "top_contributors": [
+        {
+          "direction": "INCREASES_POSITIVE_CLASS_OUTPUT",
+          "feature": "troponin",
+          "magnitude": 0.2733552130259522,
+          "observed_value": 0.18,
+          "rank": 1,
+          "shap_value": 0.2733552130259522
+        },
+        {
+          "direction": "INCREASES_POSITIVE_CLASS_OUTPUT",
+          "feature": "ck_mb",
+          "magnitude": 0.22616175142309744,
+          "observed_value": 8.4,
+          "rank": 2,
+          "shap_value": 0.22616175142309744
+        },
+        {
+          "direction": "DECREASES_POSITIVE_CLASS_OUTPUT",
+          "feature": "gender",
+          "magnitude": 0.012045295173487947,
+          "observed_value": 0.0,
+          "rank": 3,
+          "shap_value": -0.012045295173487947
+        }
+      ]
+    },
+    "priority": {
+      "reason": "No valid triage/risk priority exists and dynamic queue capability is not implemented",
+      "status": "PENDING_CAPABILITY",
+      "valid_triage_available": false,
+      "value": null
+    },
+    "triage": {
+      "assessment_id": "802d56ac-7743-4b9b-bc75-e207dfae834f",
+      "disclaimer": "Hackathon clinical decision-support prototype only; not clinically validated for real-world emergency triage and does not replace clinician assessment.",
+      "input_snapshot": {
+        "cardiac_risk": {
+          "model_version": "cardiac-risk-rf-1.0.0",
+          "predicted_class": 1,
+          "probability": 0.9930555555555555,
+          "status": "SUCCESS"
+        },
+        "encounter": {
+          "id": "8bd266f7-ba85-4706-9fd9-5fbf1cec8775",
+          "started_at": "2026-08-07T08:00:00"
+        },
+        "latest_vitals": {
+          "diastolic_bp": 86.0,
+          "encounter_id": "8bd266f7-ba85-4706-9fd9-5fbf1cec8775",
+          "heart_rate": 104.0,
+          "id": "cad5f481-5f69-4f35-85b9-0cd9713b64e4",
+          "measured_at": "2026-08-07T08:10:00",
+          "respiratory_rate": 20.0,
+          "source": "SIMULATOR",
+          "spo2": 96.0,
+          "systolic_bp": 142.0,
+          "temperature": 37.0
+        },
+        "patient": {
+          "age_at_encounter": 48,
+          "date_of_birth": "1978-04-18",
+          "id": "2a275aee-7b9d-471a-a38d-916116d4f5b1"
+        },
+        "symptoms": [
+          {
+            "duration": "30 minutes",
+            "id": "081e8590-29e1-42c5-8a40-f11b00121aca",
+            "name": "chest pain",
+            "onset": "2026-08-07T07:30:00",
+            "present": true,
+            "provenance": {
+              "original_name": "chest pain",
+              "source": "MANUAL"
+            },
+            "severity": 8,
+            "source": "MANUAL"
+          },
+          {
+            "duration": null,
+            "id": "63c75e85-5a2f-46e4-b8c7-97c93279339d",
+            "name": "shortness of breath",
+            "onset": null,
+            "present": true,
+            "provenance": {
+              "original_name": "shortness of breath",
+              "source": "MANUAL"
+            },
+            "severity": 7,
+            "source": "MANUAL"
+          },
+          {
+            "duration": null,
+            "id": "80a5b06e-8781-4719-a603-2e69329e3cbb",
+            "name": "sweating",
+            "onset": null,
+            "present": true,
+            "provenance": {
+              "original_name": "sweating",
+              "source": "MANUAL"
+            },
+            "severity": 6,
+            "source": "MANUAL"
+          }
+        ]
+      },
+      "missing_information": [
+        "immediate_life_saving_intervention_need",
+        "consciousness_level",
+        "clinician_high_risk_assessment",
+        "anticipated_resource_count"
+      ],
+      "policy_name": "NEUROBOTS Prototype ESI Subset",
+      "policy_version": "prototype-esi-subset-1.0.0",
+      "prototype_esi_level": 2,
+      "provisional": true,
+      "rule_hits": [
+        {
+          "description": "Adult ESI-v5 high-risk vital-sign screen prompts escalation reassessment.",
+          "effect": "PROVISIONAL_LEVEL_2_SIGNAL",
+          "id": "TRIAGE-001",
+          "inputs_used": {
+            "age": 48,
+            "heart_rate": 104.0,
+            "respiratory_rate": 20.0,
+            "spo2": 96.0,
+            "thresholds": {
+              "heart_rate_gt": 100,
+              "respiratory_rate_gt": 20,
+              "spo2_lt": 92
+            }
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        },
+        {
+          "description": "High-risk symptom cluster: current chest pain with dyspnea or sweating.",
+          "effect": "PROVISIONAL_LEVEL_2_SIGNAL",
+          "id": "TRIAGE-002",
+          "inputs_used": {
+            "chest_pain": true,
+            "shortness_of_breath": true,
+            "sweating": true
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        },
+        {
+          "description": "Reported symptom severity of 7/10 or greater is a consideration, not an automatic level assignment.",
+          "effect": "SUPPORTING_SIGNAL_ONLY",
+          "id": "TRIAGE-003",
+          "inputs_used": {
+            "reported_severities": [
+              8,
+              7,
+              6
+            ]
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        },
+        {
+          "description": "High cardiac-model output is recorded as supporting context only.",
+          "effect": "SUPPORTING_SIGNAL_ONLY",
+          "id": "TRIAGE-004",
+          "inputs_used": {
+            "model_version": "cardiac-risk-rf-1.0.0",
+            "predicted_class": 1,
+            "probability": 0.9930555555555555,
+            "status": "SUCCESS",
+            "threshold": 0.8
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        },
+        {
+          "description": "Missing full-ESI inputs require a provisional, limited assessment.",
+          "effect": "MARK_PROVISIONAL",
+          "id": "TRIAGE-005",
+          "inputs_used": {
+            "missing_information": [
+              "immediate_life_saving_intervention_need",
+              "consciousness_level",
+              "clinician_high_risk_assessment",
+              "anticipated_resource_count"
+            ]
+          },
+          "triggered": true,
+          "version": "1.0.0"
+        }
+      ],
+      "severity_level": "PROTOTYPE_ESI_2"
+    },
+    "workflow_id": "5a04b3e9-978c-48a7-a37b-de1238838e63"
+  },
+  "second_vitals_id": "cad5f481-5f69-4f35-85b9-0cd9713b64e4",
+  "severity_changed": false
+}

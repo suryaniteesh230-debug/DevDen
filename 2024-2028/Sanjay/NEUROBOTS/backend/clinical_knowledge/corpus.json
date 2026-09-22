@@ -1,0 +1,138 @@
+{
+  "corpus_version": "acs-corpus-1.0.0",
+  "scope": "Small, curated decision-support corpus for suspected acute coronary syndrome, myocardial infarction, and emergency chest-pain evaluation. It is not comprehensive medical knowledge.",
+  "chunks": [
+    {
+      "chunk_id": "ACS25-SYMPTOMS-01",
+      "source_id": "ACC-AHA-ACS-2025",
+      "title": "2025 Guideline for the Management of Patients With Acute Coronary Syndromes",
+      "organization": "American College of Cardiology / American Heart Association / ACEP / NAEMSP / SCAI",
+      "source_url": "https://professional.heart.org/en/science-news/2025-guideline-for-the-management-of-patients-with-acute-coronary-syndromes",
+      "document_version_date": "2025-02-27",
+      "section": "Scope and patient signs",
+      "content": "Acute coronary syndrome includes unstable angina, NSTEMI, and STEMI. Clinically relevant presentations can include chest pain or discomfort, shortness of breath, lightheadedness, nausea or vomiting, discomfort in an arm or shoulder, and jaw, neck, or back pain. Sweating and rapid heartbeat may also occur.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "ACS25-URGENT-02",
+      "source_id": "ACC-AHA-ACS-2025",
+      "title": "2025 Guideline for the Management of Patients With Acute Coronary Syndromes",
+      "organization": "American College of Cardiology / American Heart Association / ACEP / NAEMSP / SCAI",
+      "source_url": "https://professional.heart.org/en/science-news/2025-guideline-for-the-management-of-patients-with-acute-coronary-syndromes",
+      "document_version_date": "2025-02-27",
+      "section": "Acute coronary syndrome scope",
+      "content": "Acute coronary syndrome represents sudden reduction of blood flow to heart muscle and includes time-sensitive conditions. Suspected ACS requires prompt clinician-led emergency evaluation; a decision-support result is not a diagnosis and must not delay emergency care.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "CHEST21-ECG-01",
+      "source_id": "AHA-ACC-CHEST-PAIN-2021",
+      "title": "2021 AHA/ACC Guideline for the Evaluation and Diagnosis of Chest Pain",
+      "organization": "American Heart Association / American College of Cardiology",
+      "source_url": "https://professional.heart.org/en/science-news/2021-guideline-for-the-evaluation-and-diagnosis-of-chest-pain",
+      "document_version_date": "2021-10-28",
+      "section": "Initial evaluation",
+      "content": "For acute chest pain, rapid assessment should focus on early identification or exclusion of life-threatening causes. Electrocardiography is an important initial test in patients with acute chest pain, interpreted within the full clinical context.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "CHEST21-TROPONIN-02",
+      "source_id": "AHA-ACC-CHEST-PAIN-2021",
+      "title": "2021 AHA/ACC Guideline for the Evaluation and Diagnosis of Chest Pain",
+      "organization": "American Heart Association / American College of Cardiology",
+      "source_url": "https://professional.heart.org/en/science-news/2021-guideline-for-the-evaluation-and-diagnosis-of-chest-pain",
+      "document_version_date": "2021-10-28",
+      "section": "Cardiac biomarkers",
+      "content": "Serial cardiac troponin testing is useful for identifying abnormal values and a rising or falling pattern associated with acute myocardial injury. High-sensitivity cardiac troponin is preferred when available. Troponin elevation indicates myocardial injury but does not by itself establish the cause.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "CHEST21-PATHWAYS-03",
+      "source_id": "AHA-ACC-CHEST-PAIN-2021",
+      "title": "2021 AHA/ACC Guideline for the Evaluation and Diagnosis of Chest Pain",
+      "organization": "American Heart Association / American College of Cardiology",
+      "source_url": "https://professional.heart.org/en/science-news/2021-guideline-for-the-evaluation-and-diagnosis-of-chest-pain",
+      "document_version_date": "2021-10-28",
+      "section": "Clinical decision pathways",
+      "content": "Structured clinical decision pathways should integrate symptoms, examination, ECG, and serial troponin rather than relying on a single finding. Risk stratification must be performed in an appropriate care setting by qualified clinicians.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "UDMI18-INJURY-01",
+      "source_id": "FOURTH-UDMI-2018",
+      "title": "Fourth Universal Definition of Myocardial Infarction",
+      "organization": "ESC / ACC / AHA / World Heart Federation",
+      "source_url": "https://doi.org/10.1161/CIR.0000000000000617",
+      "document_version_date": "2018-08-25",
+      "section": "Myocardial injury and infarction",
+      "content": "Myocardial injury is characterized by cardiac troponin above the assay's upper reference limit. Acute injury is supported by a rise or fall. Myocardial infarction requires acute myocardial injury plus clinical evidence of myocardial ischemia; an isolated elevated troponin is not sufficient to confirm infarction.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "UDMI18-ISCHEMIA-02",
+      "source_id": "FOURTH-UDMI-2018",
+      "title": "Fourth Universal Definition of Myocardial Infarction",
+      "organization": "ESC / ACC / AHA / World Heart Federation",
+      "source_url": "https://doi.org/10.1161/CIR.0000000000000617",
+      "document_version_date": "2018-08-25",
+      "section": "Evidence of ischemia",
+      "content": "Clinical evidence used with acute myocardial injury can include symptoms of ischemia, new ischemic ECG changes, development of pathological Q waves, imaging evidence, or identification of a coronary thrombus. The complete definition requires clinician interpretation.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "ESC23-DIAGNOSIS-01",
+      "source_id": "ESC-ACS-2023",
+      "title": "2023 ESC Guidelines for the management of acute coronary syndromes",
+      "organization": "European Society of Cardiology",
+      "source_url": "https://doi.org/10.1093/eurheartj/ehad191",
+      "document_version_date": "2023-08-25",
+      "section": "Diagnosis and initial assessment",
+      "content": "Assessment across the acute coronary syndrome spectrum combines clinical presentation, electrocardiography, and cardiac troponin. Diagnostic and risk-stratification decisions should not depend on one symptom or biomarker in isolation.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "CDC-SIGNS-01",
+      "source_id": "CDC-HEART-ATTACK-2024",
+      "title": "About Heart Attack",
+      "organization": "US Centers for Disease Control and Prevention",
+      "source_url": "https://www.cdc.gov/heart-disease/about/heart-attack.html",
+      "document_version_date": "2024-10-24",
+      "section": "Signs and symptoms",
+      "content": "Common heart-attack warning signs include chest pain or discomfort, feeling weak or light-headed, jaw, neck or back discomfort, arm or shoulder discomfort, and shortness of breath. Symptoms can vary, and emergency help should be sought promptly when a heart attack is suspected.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "AHA-WOMEN-01",
+      "source_id": "AHA-ACS-PATIENT-2025",
+      "title": "Key Patient Messages: 2025 Acute Coronary Syndromes Guideline",
+      "organization": "American Heart Association",
+      "source_url": "https://professional.heart.org/en/science-news/patient-resources/key-patient-messages-2025-acute-coronary-syndromes-guideline",
+      "document_version_date": "2025-02-27",
+      "section": "Presentation variation",
+      "content": "ACS symptoms are variable. Women may also report upper-back pressure, anxiety, upset stomach, unusual tiredness, or weakness. These associations do not establish causation or diagnosis and must be interpreted with objective findings.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "CHEST21-DIFFERENTIAL-04",
+      "source_id": "AHA-ACC-CHEST-PAIN-2021",
+      "title": "2021 AHA/ACC Guideline for the Evaluation and Diagnosis of Chest Pain",
+      "organization": "American Heart Association / American College of Cardiology",
+      "source_url": "https://professional.heart.org/en/science-news/2021-guideline-for-the-evaluation-and-diagnosis-of-chest-pain",
+      "document_version_date": "2021-10-28",
+      "section": "Life-threatening causes",
+      "content": "Evaluation of acute chest pain should consider other life-threatening causes in addition to ACS, including acute aortic syndromes and pulmonary embolism, based on presentation and examination. This small corpus does not encode complete diagnostic pathways for those conditions.",
+      "corpus_version": "acs-corpus-1.0.0"
+    },
+    {
+      "chunk_id": "ACS25-SHOCK-03",
+      "source_id": "ACC-AHA-ACS-2025",
+      "title": "2025 Guideline for the Management of Patients With Acute Coronary Syndromes",
+      "organization": "American College of Cardiology / American Heart Association / ACEP / NAEMSP / SCAI",
+      "source_url": "https://professional.heart.org/en/science-news/2025-guideline-for-the-management-of-patients-with-acute-coronary-syndromes",
+      "document_version_date": "2025-02-27",
+      "section": "Hemodynamic instability",
+      "content": "Hemodynamic instability or cardiogenic shock in the setting of suspected acute myocardial infarction is a high-risk emergency finding requiring immediate clinician-led escalation. This corpus does not generate treatment or procedure orders.",
+      "corpus_version": "acs-corpus-1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #051a0f 100%);
+  color: #00ff41;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff41;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff65;
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.8);
+}
+
+/* Selection */
+::selection {
+  background: #00ff41;
+  color: #000000;
+  text-shadow: none;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  border: 2px solid #00ff41;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: rgba(0, 255, 65, 0.1);
+  color: #00ff41;
+  font-family: 'Space Mono', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+button:hover {
+  background: rgba(0, 255, 65, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.6), inset 0 0 10px rgba(0, 255, 65, 0.1);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Links */
+a {
+  color: #00ff41;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+a:hover {
+  color: #00ff65;
+  text-shadow: 0 0 16px rgba(0, 255, 65, 0.8);
+}
+
+/* Utils */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+}
+
