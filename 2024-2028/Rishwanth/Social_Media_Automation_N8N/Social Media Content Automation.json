@@ -1,0 +1,448 @@
+{
+  "name": "Social Media Content Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "About Post",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Topic"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        -512,
+        -144
+      ],
+      "id": "7f917ba1-be33-4404-98a5-aef1a0e285ad",
+      "name": "On form submission",
+      "webhookId": "ce810483-6226-4f26-9a29-0470e57df278"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3-flash-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -448,
+        64
+      ],
+      "id": "29a82579-0ae2-42c8-bc05-57755a6740a8",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "E9eKqkWN0A4FbAYh",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Generate a social media campaign for the following topic: {{ $json.Topic }}",
+        "options": {
+          "systemMessage": "You are an AI agent for generating structured social media content.\n\nReturn ONLY valid JSON. No explanations. No markdown. No code blocks.\n\nOutput format:\n{\n\"linkedin_caption\": \"string\",\n\"linkedin_hashtags\": \"string\",\n\"linkedin_cta\": \"string\",\n\"instagram_caption\": \"string\",\n\"instagram_hashtags\": \"string\",\n\"instagram_cta\": \"string\",\n\"image_prompt\": \"string\"\n}\n\nRules:\n\nLinkedIn:\n\n* Exactly 5 lines separated by \\n\n* Professional and insightful tone\n* Max 300 words\n\nInstagram:\n\n* Exactly 5 lines separated by \\n\n* Casual, engaging, emotional tone\n* Emojis allowed\n\nHashtags:\n\n* 8 to 12 hashtags\n* Space separated\n* Must include #\n\nCTA:\n\n* One short sentence encouraging action\n\nImage_prompt:\n\n* Clear, vivid visual description\n* Suitable for AI image generation\n\nSTRICT:\n\n* Output MUST be valid JSON\n* Do not include extra text\n* Do not wrap in markdown\n* Ensure all fields exist\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -304,
+        -144
+      ],
+      "id": "688ea93e-3789-4d00-8ae7-391ce3116d6d",
+      "name": "Content Generator"
+    },
+    {
+      "parameters": {
+        "url": "=https://image.pollinations.ai/prompt/ {{ $json.image_prompt }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        256,
+        -144
+      ],
+      "id": "da26ee96-5ede-4d4c-8494-fbc32180fbc3",
+      "name": "Image Generation"
+    },
+    {
+      "parameters": {
+        "jsCode": "let raw = $json.output || \"\";\n\n// Step 1: Remove markdown blocks\nraw = raw\n  .replace(/```json/gi, '')\n  .replace(/```/g, '')\n  .trim();\n\n// Step 2: Extract JSON if extra text exists\nconst firstBrace = raw.indexOf('{');\nconst lastBrace = raw.lastIndexOf('}');\n\nif (firstBrace !== -1 && lastBrace !== -1) {\n  raw = raw.substring(firstBrace, lastBrace + 1);\n}\n\nlet parsed;\n\ntry {\n  parsed = JSON.parse(raw);\n} catch (error) {\n  return [\n    {\n      json: {\n        error: \"Invalid JSON from AI\",\n        raw_output: raw\n      }\n    }\n  ];\n}\n\n// Step 3: Validate required fields\nconst requiredFields = [\n  \"linkedin_caption\",\n  \"linkedin_hashtags\",\n  \"linkedin_cta\",\n  \"instagram_caption\",\n  \"instagram_hashtags\",\n  \"instagram_cta\",\n  \"image_prompt\"\n];\n\nfor (const field of requiredFields) {\n  if (!parsed[field]) {\n    parsed[field] = \"MISSING\";\n  }\n}\n\nreturn [\n  {\n    json: parsed\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        48,
+        -144
+      ],
+      "id": "8c01dab3-da9f-45de-a256-7ad8d0ca03bb",
+      "name": "JSON Formatting"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v18.0/1090609264128574/feed",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "message",
+              "value": "={{ ($json.instagram_text || \"\") + \"\\n\\n\" + ($json.instagram_hashtags || \"\") }}"
+            },
+            {
+              "name": "access_token",
+              "value": "EAAjI8mvLzLwBRJZADekZAfP7WHnZCeZBnAdZCq5FuT5vCkvBDZAWTpKbhht5HcBxxRR4Ensy5cZCnXZCjcCRpO8at7JZBYTxHqAzSy8TlQF6uFFVlBCSZBaftW2lkmP70QJtb6bBMEE70SlrQpK7FuT3vLj4JVoB859a5TwyTAiCAaT9lwZBtLFxwxDO1tGgHTpUjyNbfYu93OSW55mGrcOS7ZCfNZBu1oMiE3p04jfd3wwXpsoRA"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        672,
+        80
+      ],
+      "id": "1fff7e65-53f7-4d44-9752-938a4f7e1899",
+      "name": "Facebook",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "url": "={{ String($json.image_url) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        672,
+        -144
+      ],
+      "id": "3bcaf4f5-ac2d-4962-9485-1b15560e184a",
+      "name": "Image"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      topic: $json.topic || \"NO_TOPIC\",\n\n      linkedin_post: ($json.linkedin_text || \"\") + \"\\n\\n\" + ($json.linkedin_hashtags || \"\"),\n      instagram_post: ($json.instagram_text || \"\") + \"\\n\\n\" + ($json.instagram_hashtags || \"\"),\n\n      image_url: $json.image_url || \"NO_IMAGE\",\n\n      status: $json.error ? \"FAILED\" : \"SUCCESS\",\n      error: $json.error || \"NONE\",\n\n      timestamp: new Date().toISOString()\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1056,
+        -144
+      ],
+      "id": "b3bedd56-9810-40ad-bd95-634d8cc6628a",
+      "name": "Logging"
+    },
+    {
+      "parameters": {
+        "person": "zQoP_tTxIV",
+        "text": "={{    ($json.linkedin_text || \"\")    + \"\\n\\n\" +    ($json.linkedin_hashtags || \"\")  }}",
+        "shareMediaCategory": "IMAGE",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        864,
+        -144
+      ],
+      "id": "93437d77-8dc2-4d1e-8a7c-0c32a70afc39",
+      "name": "LinkedIN",
+      "retryOnFail": true,
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "3JuSudpQUlrDE6oy",
+          "name": "LinkedIn account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-_80LYFoncJ99b9aJKjwfA2HtKijFCsczq8-Kai8v40",
+          "mode": "list",
+          "cachedResultName": "Social Media Automation Log",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-_80LYFoncJ99b9aJKjwfA2HtKijFCsczq8-Kai8v40/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-_80LYFoncJ99b9aJKjwfA2HtKijFCsczq8-Kai8v40/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Topic": "={{ $('On form submission').item.json.Topic }}",
+            "LinkedIn_text": "={{ $('Alignment').item.json.linkedin_text }}",
+            "LinkedIn_captions": "={{ $('Alignment').item.json.linkedin_hashtags }}",
+            "Facebook_text": "={{ $('Alignment').item.json.instagram_text }}",
+            "Facebook_captions": "={{ $('Alignment').item.json.instagram_hashtags }}",
+            "Image_url": "={{ $('Alignment').item.json.image_url }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Topic",
+              "displayName": "Topic",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "LinkedIn_text",
+              "displayName": "LinkedIn_text",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "LinkedIn_captions",
+              "displayName": "LinkedIn_captions",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Facebook_text",
+              "displayName": "Facebook_text",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Facebook_captions",
+              "displayName": "Facebook_captions",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Image_url",
+              "displayName": "Image_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1232,
+        -144
+      ],
+      "id": "cf63f326-54f7-4453-95d1-836b53c875ca",
+      "name": "Google Sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x9NyhdoYDeO2sT8v",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      topic: $json.topic,\n\n      linkedin_text: $json.linkedin_caption + \"\\n\\n\" + $json.linkedin_cta,\n      linkedin_hashtags: $json.linkedin_hashtags,\n\n      instagram_text: $json.instagram_caption + \"\\n\\n\" + $json.instagram_cta,\n      instagram_hashtags: $json.instagram_hashtags,\n\n      image_url: \"https://image.pollinations.ai/prompt/\" + encodeURIComponent($json.image_prompt)\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        464,
+        -144
+      ],
+      "id": "dba29f71-b2d8-44eb-8dcc-5ef86154632b",
+      "name": "Alignment"
+    }
+  ],
+  "pinData": {
+    "JSON Formatting": [
+      {
+        "json": {
+          "linkedin_caption": "Success is not a final destination but a continuous commitment to excellence.\nTrue professional growth stems from consistent habits and strategic risk-taking.\nIt requires balancing long-term vision with precise daily execution.\nResilience in the face of failure defines the trajectory of a career.\nRedefine your benchmarks and lead with purpose to achieve lasting impact.",
+          "linkedin_hashtags": "#success #leadership #professionalgrowth #entrepreneurship #mindset #achievement #businessstrategy #focus #excellence #careerdevelopment",
+          "linkedin_cta": "Share one habit that changed your career path in the comments below.",
+          "instagram_caption": "Success is about those small wins that nobody else sees. ✨\nIt’s the late nights, the early mornings, and the coffee in between. ☕️\nDon’t compare your Chapter 1 to someone else’s Chapter 20. 📖\nKeep pushing, keep dreaming, and stay true to your unique journey. 🌈\nYou are capable of more than you ever imagined today! 💪",
+          "instagram_hashtags": "#motivation #goals #dreams #hustle #inspiration #growth #positivevibes #successmindset #dailygrind #believe",
+          "instagram_cta": "Double tap if you are chasing your dreams today!",
+          "image_prompt": "A minimalist, high-angle shot of a person standing on a mountain peak during sunrise, overlooking a sea of clouds, dressed in modern business casual attire, symbolizing achievement and a fresh perspective, cinematic lighting, ultra-realistic detail."
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Alignment": [
+      {
+        "json": {
+          "linkedin_text": "Success is not a final destination but a continuous commitment to excellence.\nTrue professional growth stems from consistent habits and strategic risk-taking.\nIt requires balancing long-term vision with precise daily execution.\nResilience in the face of failure defines the trajectory of a career.\nRedefine your benchmarks and lead with purpose to achieve lasting impact.\n\nShare one habit that changed your career path in the comments below.",
+          "linkedin_hashtags": "#success #leadership #professionalgrowth #entrepreneurship #mindset #achievement #businessstrategy #focus #excellence #careerdevelopment",
+          "instagram_text": "Success is about those small wins that nobody else sees. ✨\nIt’s the late nights, the early mornings, and the coffee in between. ☕️\nDon’t compare your Chapter 1 to someone else’s Chapter 20. 📖\nKeep pushing, keep dreaming, and stay true to your unique journey. 🌈\nYou are capable of more than you ever imagined today! 💪\n\nDouble tap if you are chasing your dreams today!",
+          "instagram_hashtags": "#motivation #goals #dreams #hustle #inspiration #growth #positivevibes #successmindset #dailygrind #believe",
+          "image_url": "https://image.pollinations.ai/prompt/A%20minimalist%2C%20high-angle%20shot%20of%20a%20person%20standing%20on%20a%20mountain%20peak%20during%20sunrise%2C%20overlooking%20a%20sea%20of%20clouds%2C%20dressed%20in%20modern%20business%20casual%20attire%2C%20symbolizing%20achievement%20and%20a%20fresh%20perspective%2C%20cinematic%20lighting%2C%20ultra-realistic%20detail."
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Content Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Content Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Content Generator": {
+      "main": [
+        [
+          {
+            "node": "JSON Formatting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Generation": {
+      "main": [
+        [
+          {
+            "node": "Alignment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON Formatting": {
+      "main": [
+        [
+          {
+            "node": "Image Generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook": {
+      "main": [
+        []
+      ]
+    },
+    "Image": {
+      "main": [
+        [
+          {
+            "node": "LinkedIN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Logging": {
+      "main": [
+        [
+          {
+            "node": "Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIN": {
+      "main": [
+        [
+          {
+            "node": "Logging",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alignment": {
+      "main": [
+        [
+          {
+            "node": "Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Facebook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "0145b432-129a-4c3a-8afa-f05506eb50f6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bd5be52f79607bc1d3f99b5e3fc44fa38c6014feb6086b97a84015787cfe79ff"
+  },
+  "id": "wylwaCfC8HBidvP2",
+  "tags": []
+}

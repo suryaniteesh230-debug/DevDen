@@ -1,0 +1,103 @@
+name: Procedure source monitoring
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 2 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sahayi-procedure-source-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.14.7"
+
+      - name: Install runtime package
+        run: python -m pip install --disable-pip-version-check .
+
+      - name: Run bounded one-shot source comparison
+        id: monitor
+        shell: bash
+        run: |
+          mkdir -p procedure-monitor-artifact
+          set +e
+          python -m sahayi_api.procedure_tool monitor \
+            --live \
+            --acknowledge-live-public-source-check \
+            --json \
+            --output procedure-monitor-artifact/report.json
+          monitor_exit=$?
+          set -e
+          printf '%s\n' "$monitor_exit" > procedure-monitor-artifact/exit-code.txt
+          echo "exit_code=$monitor_exit" >> "$GITHUB_OUTPUT"
+
+      - name: Write concise job summary
+        if: always()
+        env:
+          MONITOR_EXIT_CODE: ${{ steps.monitor.outputs.exit_code }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          from collections import Counter
+          import json
+          import os
+          from pathlib import Path
+
+          artifact_dir = Path("procedure-monitor-artifact")
+          artifact_dir.mkdir(parents=True, exist_ok=True)
+          report_path = artifact_dir / "report.json"
+          exit_code = os.environ.get("MONITOR_EXIT_CODE") or "unavailable"
+          lines = ["# Sahayi Procedure Intelligence", "", f"Monitor exit code: `{exit_code}`", ""]
+          try:
+              reports = json.loads(report_path.read_text(encoding="utf-8"))
+              if not isinstance(reports, list):
+                  raise ValueError("report root is not a list")
+              counts = Counter(str(report.get("classification", "invalid")) for report in reports if isinstance(report, dict))
+              lines.extend(["| Classification | Count |", "| --- | ---: |"])
+              for classification, count in sorted(counts.items()):
+                  lines.append(f"| `{classification}` | {count} |")
+              flagged = [report for report in reports if isinstance(report, dict) and report.get("classification") != "unchanged"]
+              if flagged:
+                  lines.extend(["", "## Human review required", ""])
+                  for report in flagged:
+                      lines.append(f"- `{report.get('service_id', 'unknown')}` / `{report.get('source_id', 'unknown')}`: `{report.get('classification', 'invalid')}`")
+              else:
+                  lines.extend(["", "No source-content change was detected."])
+          except (OSError, ValueError, json.JSONDecodeError):
+              lines.extend(["The monitor did not produce a valid bounded report.", "", "**Human review is required.**"])
+          summary = "\n".join(lines) + "\n"
+          (artifact_dir / "summary.md").write_text(summary, encoding="utf-8")
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as stream:
+              stream.write(summary)
+          PY
+
+      - name: Upload bounded review artifact
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: procedure-intelligence-${{ github.run_id }}
+          path: procedure-monitor-artifact/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Surface review-required or error state
+        if: always() && steps.monitor.outputs.exit_code != '0'
+        shell: bash
+        run: |
+          echo "::error title=Procedure Intelligence review required::See the job summary and bounded artifact."
+          exit 1

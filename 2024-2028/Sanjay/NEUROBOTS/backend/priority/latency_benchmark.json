@@ -1,0 +1,23 @@
+{
+  "benchmark_version": "dynamic-priority-benchmark-1.0.0",
+  "measured_at": "2026-08-07T19:51:04.011507+00:00",
+  "dynamic_queue_service_with_sqlite_persistence": {
+    "runs": 300,
+    "mean_ms": 2.3651,
+    "p50_ms": 2.3298,
+    "p95_ms": 2.7503
+  },
+  "cardiac_risk_plus_emergency_triage_plus_dynamic_queue": {
+    "runs": 300,
+    "mean_ms": 17.2662,
+    "p50_ms": 17.1613,
+    "p95_ms": 17.9381
+  },
+  "target_ms": 500,
+  "excludes": [
+    "HTTP",
+    "LangGraph",
+    "SHAP",
+    "Gemini network latency"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "scope": "Local-only warm component benchmark; excludes Gemini, workflow, and persistence",
+  "rag": {
+    "runs": 1000,
+    "mean_ms": 0.3937,
+    "p50_ms": 0.3749,
+    "p95_ms": 0.5231
+  },
+  "knowledge_graph": {
+    "runs": 1000,
+    "mean_ms": 0.1418,
+    "p50_ms": 0.1339,
+    "p95_ms": 0.1881
+  },
+  "retriever": {
+    "embedding_model": "sklearn-hashing-vectorizer-word-bigram-v1",
+    "embedding_dimension": 4096,
+    "corpus_version": "acs-corpus-1.0.0",
+    "corpus_sha256": "36e8acbcebf030ecc9a3c03553b1898e7d82d8e6693f0a75f94f593393f39b01",
+    "index_version": "clinical-hashing-index-1.0.0",
+    "chunk_count": 12
+  },
+  "graph": {
+    "graph_version": "acs-kg-1.0.0",
+    "node_count": 17,
+    "edge_count": 17
+  },
+  "clinical_reasoning_agent_mocked_provider": {
+    "scope": "Complete agent with zero-latency scripted provider; includes local RAG, KG, validation, and SQLite persistence; excludes Gemini network latency",
+    "runs": 200,
+    "mean_ms": 5.7264,
+    "p50_ms": 5.3945,
+    "p95_ms": 6.1045
+  }
+}

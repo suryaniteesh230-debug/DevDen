@@ -1,0 +1,35 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dependencies, virtual environments, and generated caches
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.uv-cache/
+.vite/
+
+# Build and runtime output
+dist/
+build/
+coverage/
+outputs/
+training_outputs/
+*.log
+*.db
+*.sqlite*
+
+# Serialized model artifacts
+*.joblib
+*.pkl
+*.pt
+*.pth
+*.onnx
+*.gguf

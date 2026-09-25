@@ -1,0 +1,26 @@
+{
+  "service_id": "uidai-aadhaar-address-update",
+  "source_id": "uidai-update-overview",
+  "cases": [
+    {
+      "case_id": "unchanged-source",
+      "classification": "candidate",
+      "reviewed_fingerprint": "eeee833d029c254638ac3d0d138b4b1ad38cbadd075fc90491cb314ce7683335",
+      "reviewed_size": 27,
+      "reviewed_at": "2026-08-28T10:10:25+05:30",
+      "candidate_html": "<html><body><p>Demo fee wording unchanged.</p><script>ignored()</script></body></html>"
+    },
+    {
+      "case_id": "changed-fee-or-form-wording",
+      "classification": "candidate",
+      "reviewed_fingerprint": "84b73a00e80c3a02766a045c5b0a84da0316bce717816ccc955349f75f2ec5ff",
+      "reviewed_size": 30,
+      "reviewed_at": "2026-08-28T10:10:25+05:30",
+      "candidate_html": "<html><body><p>Demo form wording version two — human review required.</p></body></html>"
+    },
+    {
+      "case_id": "unreachable-source",
+      "classification": "unreachable"
+    }
+  ]
+}

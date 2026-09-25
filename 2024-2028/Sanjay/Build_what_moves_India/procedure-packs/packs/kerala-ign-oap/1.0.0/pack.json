@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "service_id": "kerala-ign-oap",
+  "pack_version": "1.0.0",
+  "status": "superseded",
+  "jurisdiction": { "level": "state", "name": "Kerala" },
+  "department": "Local Self Government Department, Government of Kerala",
+  "publisher": "Government of Kerala, Sevana Pension – Social Security System",
+  "title": { "en": "Kerala Indira Gandhi National Old Age Pension" },
+  "short_description": { "en": "Verified Kerala guidance for the Indira Gandhi National Old Age Pension preliminary readiness check and local-body application." },
+  "intent_phrases": ["old age pension Kerala", "Indira Gandhi National Old Age Pension", "Kerala senior pension"],
+  "category": "social-security-pension",
+  "interaction_modes": ["in_person"],
+  "sources": [
+    {
+      "source_id": "kerala-sevana-criteria",
+      "publisher": "Government of Kerala, Sevana Pension – Social Security System",
+      "title": "Criteria for Allotting Indira Gandhi National Old Age Pension Scheme",
+      "url": "https://welfarepension.lsgkerala.gov.in/FAQsEng.aspx?pentypeid=2",
+      "retrieved_at": "2026-08-28T12:40:00+05:30",
+      "official_updated_date": null,
+      "sha256": null,
+      "source_type": "webpage"
+    },
+    {
+      "source_id": "kerala-sevana-application-forms",
+      "publisher": "Government of Kerala, Sevana Pension – Social Security System",
+      "title": "Social Security Pension – Application Forms",
+      "url": "https://welfarepension.lsgkerala.gov.in/ApplicationFormsEng.aspx",
+      "retrieved_at": "2026-08-28T12:40:00+05:30",
+      "official_updated_date": null,
+      "sha256": null,
+      "source_type": "webpage"
+    },
+    {
+      "source_id": "kerala-ign-oap-application-form",
+      "publisher": "Government of Kerala, Sevana Pension – Social Security System",
+      "title": "Indira Gandhi National Old Age Pension application form",
+      "url": "https://welfarepension.lsgkerala.gov.in/Application%20form/IGNOAPS.pdf",
+      "retrieved_at": "2026-08-28T12:40:00+05:30",
+      "official_updated_date": null,
+      "sha256": null,
+      "source_type": "pdf"
+    }
+  ],
+  "last_verified_at": "2026-08-28T12:40:00+05:30",
+  "review_due_at": "2026-09-11T12:40:00+05:30",
+  "requirements": [
+    { "fact_id": "minimum-age", "text": "The official criteria state that the applicant must be age 60 or higher.", "source_ids": ["kerala-sevana-criteria"] },
+    { "fact_id": "kerala-residence", "text": "The official criteria state that the applicant must have resided continuously in Kerala for at least three years.", "source_ids": ["kerala-sevana-criteria"] },
+    { "fact_id": "family-income", "text": "The official criteria state that annual family income must not exceed Rs. 1 lakh.", "source_ids": ["kerala-sevana-criteria"] },
+    { "fact_id": "local-body-verification", "text": "The relevant local body verifies the official conditions; this preliminary check cannot determine eligibility or approval.", "source_ids": ["kerala-sevana-criteria"] }
+  ],
+  "required_documents": [
+    { "document_id": "official-application-form", "name": "Official application form", "guidance": "Use the official application-form page for the Indira Gandhi National Old Age Pension. Complete and submit it through the local body; Sahayi does not collect or download your form.", "source_ids": ["kerala-sevana-application-forms", "kerala-ign-oap-application-form"] },
+    { "document_id": "supporting-documents", "name": "Supporting documents requested on the official form", "guidance": "The official form lists evidence fields and attachments, including age and income-related records. Check the current official form and ask the local body what applies; do not share documents with Sahayi.", "source_ids": ["kerala-ign-oap-application-form"] }
+  ],
+  "fee": {
+    "verification_status": "not_stated",
+    "amount": null,
+    "currency": null,
+    "display_message": "No application fee is stated in the official Kerala criteria and application-form pages reviewed by Sahayi.",
+    "claims": [],
+    "resolution_guidance": null,
+    "source_ids": ["kerala-sevana-criteria", "kerala-sevana-application-forms"]
+  },
+  "steps": [
+    { "step_id": "review-official-criteria", "order": 1, "title": "Review the official criteria", "instruction": "Read the Kerala Sevana criteria and use this check only as preliminary guidance.", "source_ids": ["kerala-sevana-criteria"] },
+    { "step_id": "open-official-form", "order": 2, "title": "Open the official application-form page", "instruction": "Use the official Sevana application-form page for the Indira Gandhi National Old Age Pension; Sahayi does not fill in or download the form for you.", "source_ids": ["kerala-sevana-application-forms"] },
+    { "step_id": "submit-to-local-body", "order": 3, "title": "Apply through the local body of permanent residence", "instruction": "The official criteria state that an application can be made to the local body of permanent residence. The local body reviews the conditions and supporting material.", "source_ids": ["kerala-sevana-criteria"] }
+  ],
+  "submission_channels": [
+    { "channel_id": "local-body-permanent-residence", "mode": "in_person", "name": "Local body of permanent residence", "guidance": "The official criteria direct applicants to the local body of permanent residence. Confirm the local submission arrangements before visiting.", "source_ids": ["kerala-sevana-criteria"] }
+  ],
+  "official_handoff_url": "https://welfarepension.lsgkerala.gov.in/ApplicationFormsEng.aspx",
+  "tracking_guidance": null,
+  "limitations": [
+    { "fact_id": "guidance-only", "text": "Sahayi provides preliminary guidance only. It is not the Kerala Government or the Sevana system, cannot submit an application, and does not decide eligibility.", "source_ids": ["kerala-sevana-criteria", "kerala-sevana-application-forms"] },
+    { "fact_id": "local-body-decision", "text": "A local body must review the official criteria, application and supporting material. A result from Sahayi is never an approval or a promise of pension.", "source_ids": ["kerala-sevana-criteria"] },
+    { "fact_id": "pension-amount-omitted", "text": "Sahayi does not show a pension amount because the reviewed Sevana criteria page contains inconsistent current-table, history and special-amount material without a reviewed official order resolving it.", "source_ids": ["kerala-sevana-criteria"] }
+  ],
+  "readiness": {
+    "questions": [
+      { "question_id": "age-60-or-higher", "prompt": { "en": "Are you age 60 or higher?" }, "help_text": { "en": "Choose a category only; do not enter your date of birth." }, "answer_type": "single_choice", "options": [{ "option_id": "yes", "label": { "en": "Yes" } }, { "option_id": "no", "label": { "en": "No" } }, { "option_id": "unsure", "label": { "en": "I am unsure" } }], "minimum": null, "maximum": null, "required": true, "sensitivity": "non_sensitive", "source_ids": ["kerala-sevana-criteria"], "visible_when": null },
+      { "question_id": "kerala-residence-three-years", "prompt": { "en": "Have you continuously resided in Kerala for at least three years?" }, "help_text": { "en": "Choose a category only; do not enter an address or dates." }, "answer_type": "single_choice", "options": [{ "option_id": "yes", "label": { "en": "Yes" } }, { "option_id": "no", "label": { "en": "No" } }, { "option_id": "unsure", "label": { "en": "I am unsure" } }], "minimum": null, "maximum": null, "required": true, "sensitivity": "non_sensitive", "source_ids": ["kerala-sevana-criteria"], "visible_when": { "op": "equals", "question_id": "age-60-or-higher", "value": "yes" } },
+      { "question_id": "family-income-category", "prompt": { "en": "Is annual family income within Rs. 1 lakh?" }, "help_text": { "en": "Choose only a category. Do not enter an income amount or any document details." }, "answer_type": "single_choice", "options": [{ "option_id": "within", "label": { "en": "Within Rs. 1 lakh" } }, { "option_id": "above", "label": { "en": "Above Rs. 1 lakh" } }, { "option_id": "unsure", "label": { "en": "I am unsure" } }, { "option_id": "prefer-not-to-answer", "label": { "en": "Prefer not to answer" } }], "minimum": null, "maximum": null, "required": true, "sensitivity": "sensitive", "source_ids": ["kerala-sevana-criteria"], "visible_when": { "op": "equals", "question_id": "kerala-residence-three-years", "value": "yes" } },
+      { "question_id": "service-or-family-pension", "prompt": { "en": "Do you receive a service or family pension?" }, "help_text": { "en": "Choose a category only. The official criteria state exceptions, so the local body must review a Yes answer." }, "answer_type": "single_choice", "options": [{ "option_id": "yes", "label": { "en": "Yes" } }, { "option_id": "no", "label": { "en": "No" } }, { "option_id": "unsure", "label": { "en": "I am unsure" } }, { "option_id": "prefer-not-to-answer", "label": { "en": "Prefer not to answer" } }], "minimum": null, "maximum": null, "required": true, "sensitivity": "sensitive", "source_ids": ["kerala-sevana-criteria"], "visible_when": { "op": "equals", "question_id": "family-income-category", "value": "within" } },
+      { "question_id": "income-tax-payer", "prompt": { "en": "Are you an income-tax payer?" }, "help_text": { "en": "Choose a category only; do not enter tax details." }, "answer_type": "single_choice", "options": [{ "option_id": "yes", "label": { "en": "Yes" } }, { "option_id": "no", "label": { "en": "No" } }, { "option_id": "unsure", "label": { "en": "I am unsure" } }, { "option_id": "prefer-not-to-answer", "label": { "en": "Prefer not to answer" } }], "minimum": null, "maximum": null, "required": true, "sensitivity": "sensitive", "source_ids": ["kerala-sevana-criteria"], "visible_when": { "op": "equals", "question_id": "service-or-family-pension", "value": "no" } },
+      { "question_id": "other-social-welfare-pension", "prompt": { "en": "Do you receive another social-welfare pension?" }, "help_text": { "en": "Choose a category only. The official criteria state a disability-pension exception, so the local body must review a Yes answer." }, "answer_type": "single_choice", "options": [{ "option_id": "yes", "label": { "en": "Yes" } }, { "option_id": "no", "label": { "en": "No" } }, { "option_id": "unsure", "label": { "en": "I am unsure" } }, { "option_id": "prefer-not-to-answer", "label": { "en": "Prefer not to answer" } }], "minimum": null, "maximum": null, "required": true, "sensitivity": "sensitive", "source_ids": ["kerala-sevana-criteria"], "visible_when": { "op": "equals", "question_id": "income-tax-payer", "value": "no" } }
+    ],
+    "additional_review_items": [
+      { "fact_id": "respectful-personal-circumstances-review", "text": "The official criteria include conditions expressed in terms of destitution, support from another person, and habitual begging. These need respectful local-body review; Sahayi does not ask about or interpret them.", "source_ids": ["kerala-sevana-criteria"] },
+      { "fact_id": "property-and-residence-review", "text": "The local body must review the official land, building, vehicle and institutional-residence conditions, including any stated exceptions. Sahayi does not infer these conditions.", "source_ids": ["kerala-sevana-criteria"] },
+      { "fact_id": "local-body-duplicate-review", "text": "The official criteria also address applications or benefits across local bodies. The relevant local body must verify this directly.", "source_ids": ["kerala-sevana-criteria"] }
+    ],
+    "outcomes": [
+      { "outcome_id": "age-preliminary-mismatch", "status": "alternative_path", "title": { "en": "The age condition does not appear aligned" }, "explanation": { "en": "The official Kerala criteria state an age threshold of 60 or higher. Confirm the available support options with the relevant local body." }, "recommended_next_steps": [{ "en": "Review the official Kerala criteria." }, { "en": "Ask the local body about any other suitable official support." }], "official_handoff_url": "https://welfarepension.lsgkerala.gov.in/FAQsEng.aspx?pentypeid=2", "source_ids": ["kerala-sevana-criteria"], "disclaimer": { "en": "This is preliminary guidance, not an official eligibility decision or approval." }, "is_default": false },
+      { "outcome_id": "residence-preliminary-mismatch", "status": "alternative_path", "title": { "en": "The Kerala-residence condition does not appear aligned" }, "explanation": { "en": "The official Kerala criteria state a continuous Kerala-residence requirement of at least three years. A local body can confirm the applicable official position." }, "recommended_next_steps": [{ "en": "Review the official Kerala criteria." }, { "en": "Contact the local body of permanent residence for official guidance." }], "official_handoff_url": "https://welfarepension.lsgkerala.gov.in/FAQsEng.aspx?pentypeid=2", "source_ids": ["kerala-sevana-criteria"], "disclaimer": { "en": "This is preliminary guidance, not an official eligibility decision or approval." }, "is_default": false },
+      { "outcome_id": "income-preliminary-mismatch", "status": "alternative_path", "title": { "en": "The family-income condition does not appear aligned" }, "explanation": { "en": "The official Kerala criteria state that annual family income must not exceed Rs. 1 lakh. The local body can explain official options and verify the condition." }, "recommended_next_steps": [{ "en": "Review the official Kerala criteria." }, { "en": "Contact the local body for official guidance." }], "official_handoff_url": "https://welfarepension.lsgkerala.gov.in/FAQsEng.aspx?pentypeid=2", "source_ids": ["kerala-sevana-criteria"], "disclaimer": { "en": "This is preliminary guidance, not an official eligibility decision or approval." }, "is_default": false },
+      { "outcome_id": "tax-preliminary-mismatch", "status": "alternative_path", "title": { "en": "The income-tax condition does not appear aligned" }, "explanation": { "en": "The official Kerala criteria state that an income-tax payer cannot apply. Confirm the official position with the relevant local body." }, "recommended_next_steps": [{ "en": "Review the official Kerala criteria." }, { "en": "Contact the local body for official guidance." }], "official_handoff_url": "https://welfarepension.lsgkerala.gov.in/FAQsEng.aspx?pentypeid=2", "source_ids": ["kerala-sevana-criteria"], "disclaimer": { "en": "This is preliminary guidance, not an official eligibility decision or approval." }, "is_default": false },
+      { "outcome_id": "pension-local-body-review", "status": "cannot_confirm", "title": { "en": "A local-body pension review is needed" }, "explanation": { "en": "The official criteria restrict service, family and other social-welfare pensions but state exceptions. Sahayi cannot interpret those exceptions; the local body must review them." }, "recommended_next_steps": [{ "en": "Review the official Kerala criteria and the stated exceptions." }, { "en": "Ask the local body to review the pension condition before applying." }], "official_handoff_url": "https://welfarepension.lsgkerala.gov.in/FAQsEng.aspx?pentypeid=2", "source_ids": ["kerala-sevana-criteria"], "disclaimer": { "en": "This is preliminary guidance, not an official eligibility decision or approval." }, "is_default": false },
+      { "outcome_id": "preliminary-conditions-aligned", "status": "ready", "title": { "en": "Preliminary conditions look aligned — local-body review is still required" }, "explanation": { "en": "Your choices align with several preliminary conditions. Other official conditions, documents and exceptions remain for the relevant local body to verify." }, "recommended_next_steps": [{ "en": "Open the official application-form page." }, { "en": "Apply through the local body of permanent residence." }, { "en": "Ask the local body to review the remaining official conditions." }], "official_handoff_url": "https://welfarepension.lsgkerala.gov.in/ApplicationFormsEng.aspx", "source_ids": ["kerala-sevana-criteria", "kerala-sevana-application-forms"], "disclaimer": { "en": "This preliminary screening is not official eligibility, approval or a promise of pension." }, "is_default": false },
+      { "outcome_id": "more-information-needed", "status": "needs_information", "title": { "en": "More information is needed for preliminary guidance" }, "explanation": { "en": "You chose an unsure or withheld category, or Sahayi cannot safely determine a preliminary direction. The local body can review the official conditions without requiring you to provide details to Sahayi." }, "recommended_next_steps": [{ "en": "Review the official Kerala criteria." }, { "en": "Contact the local body of permanent residence for official guidance." }], "official_handoff_url": "https://welfarepension.lsgkerala.gov.in/ApplicationFormsEng.aspx", "source_ids": ["kerala-sevana-criteria", "kerala-sevana-application-forms"], "disclaimer": { "en": "This is preliminary guidance, not an official eligibility decision or approval." }, "is_default": true }
+    ],
+    "rules": [
+      { "rule_id": "age-below-threshold", "priority": 1, "expression": { "op": "equals", "question_id": "age-60-or-higher", "value": "no" }, "outcome_id": "age-preliminary-mismatch", "source_ids": ["kerala-sevana-criteria"] },
+      { "rule_id": "residence-below-threshold", "priority": 2, "expression": { "op": "equals", "question_id": "kerala-residence-three-years", "value": "no" }, "outcome_id": "residence-preliminary-mismatch", "source_ids": ["kerala-sevana-criteria"] },
+      { "rule_id": "income-above-threshold", "priority": 3, "expression": { "op": "equals", "question_id": "family-income-category", "value": "above" }, "outcome_id": "income-preliminary-mismatch", "source_ids": ["kerala-sevana-criteria"] },
+      { "rule_id": "service-family-pension-review", "priority": 4, "expression": { "op": "equals", "question_id": "service-or-family-pension", "value": "yes" }, "outcome_id": "pension-local-body-review", "source_ids": ["kerala-sevana-criteria"] },
+      { "rule_id": "income-tax-payer", "priority": 5, "expression": { "op": "equals", "question_id": "income-tax-payer", "value": "yes" }, "outcome_id": "tax-preliminary-mismatch", "source_ids": ["kerala-sevana-criteria"] },
+      { "rule_id": "other-welfare-pension-review", "priority": 6, "expression": { "op": "equals", "question_id": "other-social-welfare-pension", "value": "yes" }, "outcome_id": "pension-local-body-review", "source_ids": ["kerala-sevana-criteria"] },
+      { "rule_id": "all-preliminary-conditions-aligned", "priority": 7, "expression": { "op": "all", "expressions": [{ "op": "equals", "question_id": "age-60-or-higher", "value": "yes" }, { "op": "equals", "question_id": "kerala-residence-three-years", "value": "yes" }, { "op": "equals", "question_id": "family-income-category", "value": "within" }, { "op": "equals", "question_id": "service-or-family-pension", "value": "no" }, { "op": "equals", "question_id": "income-tax-payer", "value": "no" }, { "op": "equals", "question_id": "other-social-welfare-pension", "value": "no" }] }, "outcome_id": "preliminary-conditions-aligned", "source_ids": ["kerala-sevana-criteria", "kerala-sevana-application-forms"] }
+    ]
+  },
+  "provenance": {
+    "title": ["kerala-sevana-criteria"],
+    "short-description": ["kerala-sevana-criteria"],
+    "requirements": ["kerala-sevana-criteria"],
+    "required-documents": ["kerala-sevana-application-forms", "kerala-ign-oap-application-form"],
+    "fee": ["kerala-sevana-criteria", "kerala-sevana-application-forms"],
+    "steps": ["kerala-sevana-criteria", "kerala-sevana-application-forms"],
+    "submission-channels": ["kerala-sevana-criteria"],
+    "official-handoff-url": ["kerala-sevana-application-forms"],
+    "limitations": ["kerala-sevana-criteria", "kerala-sevana-application-forms"],
+    "readiness": ["kerala-sevana-criteria", "kerala-sevana-application-forms"],
+    "additional-review-items": ["kerala-sevana-criteria"]
+  }
+}

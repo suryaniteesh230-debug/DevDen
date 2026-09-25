@@ -1,0 +1,1942 @@
+{
+  "$defs": {
+    "AssistanceDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "form_mode": {
+          "$ref": "#/$defs/FormAssistanceMode"
+        },
+        "form_source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Form Source Ids",
+          "type": "array"
+        },
+        "personas": {
+          "items": {
+            "$ref": "#/$defs/SyntheticPersona"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Personas",
+          "type": "array"
+        },
+        "preparation_fields": {
+          "items": {
+            "$ref": "#/$defs/FormAssistanceField"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "title": "Preparation Fields",
+          "type": "array"
+        },
+        "title": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Title",
+          "type": "object"
+        }
+      },
+      "required": [
+        "form_mode",
+        "title",
+        "preparation_fields",
+        "personas"
+      ],
+      "title": "AssistanceDefinition",
+      "type": "object"
+    },
+    "CitedFact": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "text": {
+          "maxLength": 1200,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fact_id",
+        "text",
+        "source_ids"
+      ],
+      "title": "CitedFact",
+      "type": "object"
+    },
+    "DocumentGuidance": {
+      "additionalProperties": false,
+      "properties": {
+        "document_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Document Id",
+          "type": "string"
+        },
+        "guidance": {
+          "maxLength": 1200,
+          "minLength": 1,
+          "title": "Guidance",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "document_id",
+        "name",
+        "guidance",
+        "source_ids"
+      ],
+      "title": "DocumentGuidance",
+      "type": "object"
+    },
+    "ExpectedSourceFormat": {
+      "enum": [
+        "html",
+        "pdf"
+      ],
+      "title": "ExpectedSourceFormat",
+      "type": "string"
+    },
+    "FeeClaim": {
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*(?:\\d{0,8}|(?=[\\d.]{1,11}0*$)\\d{0,8}\\.\\d{0,2}0*$)",
+              "type": "string"
+            }
+          ],
+          "title": "Amount"
+        },
+        "currency": {
+          "pattern": "^[A-Z]{3}$",
+          "title": "Currency",
+          "type": "string"
+        },
+        "qualifier": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Qualifier",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "amount",
+        "currency",
+        "qualifier",
+        "source_ids"
+      ],
+      "title": "FeeClaim",
+      "type": "object"
+    },
+    "FeeInformation": {
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "pattern": "^(?!^[-+.]*$)[+-]?0*(?:\\d{0,8}|(?=[\\d.]{1,11}0*$)\\d{0,8}\\.\\d{0,2}0*$)",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount"
+        },
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/FeeClaim"
+          },
+          "maxItems": 8,
+          "title": "Claims",
+          "type": "array"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Z]{3}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "display_message": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Display Message",
+          "type": "string"
+        },
+        "resolution_guidance": {
+          "anyOf": [
+            {
+              "maxLength": 240,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Resolution Guidance"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "verification_status": {
+          "$ref": "#/$defs/FeeVerificationStatus"
+        }
+      },
+      "required": [
+        "verification_status",
+        "amount",
+        "currency",
+        "display_message",
+        "claims",
+        "source_ids"
+      ],
+      "title": "FeeInformation",
+      "type": "object"
+    },
+    "FeeVerificationStatus": {
+      "enum": [
+        "confirmed",
+        "conflicting",
+        "free",
+        "not_stated"
+      ],
+      "title": "FeeVerificationStatus",
+      "type": "string"
+    },
+    "FormAssistanceField": {
+      "additionalProperties": false,
+      "properties": {
+        "choices": {
+          "items": {
+            "$ref": "#/$defs/PreparationChoice"
+          },
+          "maxItems": 12,
+          "title": "Choices",
+          "type": "array"
+        },
+        "confirmation_required": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confirmation Required"
+        },
+        "demo_value": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "maxLength": 240,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxProperties": 12,
+              "minProperties": 1,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Demo Value"
+        },
+        "document_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Document Ids",
+          "type": "array"
+        },
+        "editable": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Editable"
+        },
+        "explanation": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Explanation",
+          "type": "object"
+        },
+        "field_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Field Id",
+          "type": "string"
+        },
+        "handling": {
+          "$ref": "#/$defs/FormFieldHandling"
+        },
+        "input_type": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PreparationInputType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "label": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Label",
+          "type": "object"
+        },
+        "may_appear_on_sheet": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "May Appear On Sheet"
+        },
+        "question": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "maxLength": 240,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxProperties": 12,
+              "minProperties": 1,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "maxLength": 80,
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
+        "readiness_question_id": {
+          "anyOf": [
+            {
+              "maxLength": 80,
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Readiness Question Id"
+        },
+        "required": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Required"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/FormFieldStatus"
+        },
+        "supported_value_sources": {
+          "items": {
+            "$ref": "#/$defs/PreparationValueSource"
+          },
+          "maxItems": 4,
+          "title": "Supported Value Sources",
+          "type": "array"
+        },
+        "validation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PreparationValidationRule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "why_needed": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "maxLength": 240,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxProperties": 12,
+              "minProperties": 1,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Why Needed"
+        }
+      },
+      "required": [
+        "field_id",
+        "label",
+        "explanation",
+        "handling",
+        "status",
+        "source_ids"
+      ],
+      "title": "FormAssistanceField",
+      "type": "object"
+    },
+    "FormAssistanceMode": {
+      "enum": [
+        "official_form_worksheet",
+        "preparation_worksheet"
+      ],
+      "title": "FormAssistanceMode",
+      "type": "string"
+    },
+    "FormFieldHandling": {
+      "enum": [
+        "fictional_demo",
+        "citizen_private",
+        "not_collected"
+      ],
+      "title": "FormFieldHandling",
+      "type": "string"
+    },
+    "FormFieldStatus": {
+      "enum": [
+        "verified_official_form",
+        "preparation_only"
+      ],
+      "title": "FormFieldStatus",
+      "type": "string"
+    },
+    "InteractionMode": {
+      "enum": [
+        "online",
+        "in_person"
+      ],
+      "title": "InteractionMode",
+      "type": "string"
+    },
+    "Jurisdiction": {
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "$ref": "#/$defs/JurisdictionLevel"
+        },
+        "name": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "name"
+      ],
+      "title": "Jurisdiction",
+      "type": "object"
+    },
+    "JurisdictionLevel": {
+      "enum": [
+        "national",
+        "state",
+        "local"
+      ],
+      "title": "JurisdictionLevel",
+      "type": "string"
+    },
+    "LifecycleStatus": {
+      "enum": [
+        "draft",
+        "active",
+        "superseded"
+      ],
+      "title": "LifecycleStatus",
+      "type": "string"
+    },
+    "LocaleTranslation": {
+      "additionalProperties": false,
+      "properties": {
+        "intent_phrases": {
+          "items": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "title": "Intent Phrases",
+          "type": "array"
+        },
+        "text": {
+          "maxProperties": 500,
+          "minProperties": 1,
+          "patternProperties": {
+            "^[a-z0-9]+(?:[.-][a-z0-9]+)*$": {
+              "maxLength": 1200,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "propertyNames": {
+            "maxLength": 160
+          },
+          "title": "Text",
+          "type": "object"
+        }
+      },
+      "required": [
+        "intent_phrases",
+        "text"
+      ],
+      "title": "LocaleTranslation",
+      "type": "object"
+    },
+    "LocaleTranslationMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "disclaimer": {
+          "maxLength": 1200,
+          "minLength": 1,
+          "title": "Disclaimer",
+          "type": "string"
+        },
+        "method": {
+          "$ref": "#/$defs/TranslationMethod"
+        },
+        "review_status": {
+          "$ref": "#/$defs/TranslationReviewStatus"
+        }
+      },
+      "required": [
+        "method",
+        "review_status",
+        "disclaimer"
+      ],
+      "title": "LocaleTranslationMetadata",
+      "type": "object"
+    },
+    "PackLocalization": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_locale": {
+          "const": "en",
+          "title": "Canonical Locale",
+          "type": "string"
+        },
+        "locale_metadata": {
+          "additionalProperties": {
+            "$ref": "#/$defs/LocaleTranslationMetadata"
+          },
+          "propertyNames": {
+            "enum": [
+              "en",
+              "hi",
+              "ml"
+            ]
+          },
+          "title": "Locale Metadata",
+          "type": "object"
+        },
+        "translations": {
+          "additionalProperties": {
+            "$ref": "#/$defs/LocaleTranslation"
+          },
+          "propertyNames": {
+            "enum": [
+              "hi",
+              "ml"
+            ]
+          },
+          "title": "Translations",
+          "type": "object"
+        }
+      },
+      "required": [
+        "canonical_locale",
+        "locale_metadata",
+        "translations"
+      ],
+      "title": "PackLocalization",
+      "type": "object"
+    },
+    "PreparationChoice": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Label",
+          "type": "object"
+        },
+        "option_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Option Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "option_id",
+        "label"
+      ],
+      "title": "PreparationChoice",
+      "type": "object"
+    },
+    "PreparationInputType": {
+      "enum": [
+        "text",
+        "textarea",
+        "single_choice",
+        "readiness_value",
+        "document_clue",
+        "not_collected"
+      ],
+      "title": "PreparationInputType",
+      "type": "string"
+    },
+    "PreparationValidationKind": {
+      "enum": [
+        "non_empty_text",
+        "single_choice",
+        "structural",
+        "not_collected"
+      ],
+      "title": "PreparationValidationKind",
+      "type": "string"
+    },
+    "PreparationValidationRule": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/PreparationValidationKind"
+        },
+        "maximum_length": {
+          "anyOf": [
+            {
+              "maximum": 400,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum Length"
+        },
+        "minimum_length": {
+          "anyOf": [
+            {
+              "maximum": 400,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum Length"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "PreparationValidationRule",
+      "type": "object"
+    },
+    "PreparationValueSource": {
+      "enum": [
+        "citizen_confirmed_local_answer",
+        "citizen_confirmed_local_ocr_suggestion",
+        "deterministic_derived_value",
+        "bundled_synthetic_demonstration_profile"
+      ],
+      "title": "PreparationValueSource",
+      "type": "string"
+    },
+    "ProcedureStep": {
+      "additionalProperties": false,
+      "properties": {
+        "instruction": {
+          "maxLength": 1200,
+          "minLength": 1,
+          "title": "Instruction",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 50,
+          "minimum": 1,
+          "title": "Order",
+          "type": "integer"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "step_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Step Id",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step_id",
+        "order",
+        "title",
+        "instruction",
+        "source_ids"
+      ],
+      "title": "ProcedureStep",
+      "type": "object"
+    },
+    "QuestionAnswerType": {
+      "enum": [
+        "boolean",
+        "single_choice",
+        "integer"
+      ],
+      "title": "QuestionAnswerType",
+      "type": "string"
+    },
+    "QuestionSensitivity": {
+      "enum": [
+        "non_sensitive",
+        "sensitive"
+      ],
+      "title": "QuestionSensitivity",
+      "type": "string"
+    },
+    "ReadinessDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "additional_review_items": {
+          "items": {
+            "$ref": "#/$defs/CitedFact"
+          },
+          "maxItems": 20,
+          "title": "Additional Review Items",
+          "type": "array"
+        },
+        "outcomes": {
+          "items": {
+            "$ref": "#/$defs/ReadinessOutcome"
+          },
+          "maxItems": 30,
+          "minItems": 2,
+          "title": "Outcomes",
+          "type": "array"
+        },
+        "questions": {
+          "items": {
+            "$ref": "#/$defs/ReadinessQuestion"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "title": "Questions",
+          "type": "array"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/$defs/ReadinessRule"
+          },
+          "maxItems": 60,
+          "minItems": 1,
+          "title": "Rules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "questions",
+        "outcomes",
+        "rules"
+      ],
+      "title": "ReadinessDefinition",
+      "type": "object"
+    },
+    "ReadinessOption": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Label",
+          "type": "object"
+        },
+        "option_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Option Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "option_id",
+        "label"
+      ],
+      "title": "ReadinessOption",
+      "type": "object"
+    },
+    "ReadinessOutcome": {
+      "additionalProperties": false,
+      "properties": {
+        "disclaimer": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Disclaimer",
+          "type": "object"
+        },
+        "explanation": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Explanation",
+          "type": "object"
+        },
+        "is_default": {
+          "default": false,
+          "title": "Is Default",
+          "type": "boolean"
+        },
+        "official_handoff_url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Official Handoff Url",
+          "type": "string"
+        },
+        "outcome_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Outcome Id",
+          "type": "string"
+        },
+        "recommended_next_steps": {
+          "items": {
+            "additionalProperties": {
+              "maxLength": 240,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxProperties": 12,
+            "minProperties": 1,
+            "type": "object"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Recommended Next Steps",
+          "type": "array"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/ReadinessStatus"
+        },
+        "title": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Title",
+          "type": "object"
+        }
+      },
+      "required": [
+        "outcome_id",
+        "status",
+        "title",
+        "explanation",
+        "recommended_next_steps",
+        "official_handoff_url",
+        "source_ids",
+        "disclaimer"
+      ],
+      "title": "ReadinessOutcome",
+      "type": "object"
+    },
+    "ReadinessQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "answer_type": {
+          "$ref": "#/$defs/QuestionAnswerType"
+        },
+        "help_text": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "maxLength": 240,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxProperties": 12,
+              "minProperties": 1,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Help Text"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum"
+        },
+        "options": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/ReadinessOption"
+              },
+              "maxItems": 12,
+              "minItems": 2,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Options"
+        },
+        "prompt": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Prompt",
+          "type": "object"
+        },
+        "question_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Question Id",
+          "type": "string"
+        },
+        "required": {
+          "title": "Required",
+          "type": "boolean"
+        },
+        "sensitivity": {
+          "$ref": "#/$defs/QuestionSensitivity"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        },
+        "visible_when": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuleExpression"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "question_id",
+        "prompt",
+        "answer_type",
+        "required",
+        "sensitivity",
+        "source_ids"
+      ],
+      "title": "ReadinessQuestion",
+      "type": "object"
+    },
+    "ReadinessRule": {
+      "additionalProperties": false,
+      "properties": {
+        "expression": {
+          "$ref": "#/$defs/RuleExpression"
+        },
+        "outcome_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Outcome Id",
+          "type": "string"
+        },
+        "priority": {
+          "maximum": 10000,
+          "minimum": 1,
+          "title": "Priority",
+          "type": "integer"
+        },
+        "rule_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rule_id",
+        "priority",
+        "expression",
+        "outcome_id",
+        "source_ids"
+      ],
+      "title": "ReadinessRule",
+      "type": "object"
+    },
+    "ReadinessStatus": {
+      "enum": [
+        "ready",
+        "alternative_path",
+        "needs_information",
+        "cannot_confirm"
+      ],
+      "title": "ReadinessStatus",
+      "type": "string"
+    },
+    "RuleExpression": {
+      "additionalProperties": false,
+      "properties": {
+        "expression": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuleExpression"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "expressions": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/RuleExpression"
+              },
+              "maxItems": 16,
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expressions"
+        },
+        "op": {
+          "$ref": "#/$defs/RuleOperator"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "maxLength": 80,
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "maxLength": 240,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "values": {
+          "anyOf": [
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "maxLength": 240,
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                ]
+              },
+              "maxItems": 16,
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Values"
+        }
+      },
+      "required": [
+        "op"
+      ],
+      "title": "RuleExpression",
+      "type": "object"
+    },
+    "RuleOperator": {
+      "enum": [
+        "all",
+        "any",
+        "not",
+        "known",
+        "equals",
+        "in",
+        "lt",
+        "lte",
+        "gt",
+        "gte"
+      ],
+      "title": "RuleOperator",
+      "type": "string"
+    },
+    "SourceMonitoringPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_redirect_hosts": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Allowed Redirect Hosts",
+          "type": "array"
+        },
+        "expected_format": {
+          "$ref": "#/$defs/ExpectedSourceFormat"
+        },
+        "max_bytes": {
+          "default": 1000000,
+          "maximum": 5000000,
+          "minimum": 1024,
+          "title": "Max Bytes",
+          "type": "integer"
+        },
+        "normalization_version": {
+          "$ref": "#/$defs/SourceNormalizationVersion"
+        },
+        "reviewed_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewed At"
+        },
+        "reviewed_content_type": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewed Content Type"
+        },
+        "reviewed_etag": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewed Etag"
+        },
+        "reviewed_fingerprint": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewed Fingerprint"
+        },
+        "reviewed_last_modified": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewed Last Modified"
+        },
+        "reviewed_size": {
+          "anyOf": [
+            {
+              "maximum": 5000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reviewed Size"
+        }
+      },
+      "required": [
+        "expected_format",
+        "normalization_version"
+      ],
+      "title": "SourceMonitoringPolicy",
+      "type": "object"
+    },
+    "SourceNormalizationVersion": {
+      "enum": [
+        "html-text-v1",
+        "pdf-bytes-v1"
+      ],
+      "title": "SourceNormalizationVersion",
+      "type": "string"
+    },
+    "SourceRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "monitoring": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceMonitoringPolicy"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "official_updated_date": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Official Updated Date"
+        },
+        "publisher": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Publisher",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sha256"
+        },
+        "source_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_type": {
+          "$ref": "#/$defs/SourceType"
+        },
+        "title": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "publisher",
+        "title",
+        "url",
+        "retrieved_at",
+        "source_type"
+      ],
+      "title": "SourceRecord",
+      "type": "object"
+    },
+    "SourceType": {
+      "enum": [
+        "webpage",
+        "pdf"
+      ],
+      "title": "SourceType",
+      "type": "string"
+    },
+    "SubmissionChannel": {
+      "additionalProperties": false,
+      "properties": {
+        "channel_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Channel Id",
+          "type": "string"
+        },
+        "guidance": {
+          "maxLength": 1200,
+          "minLength": 1,
+          "title": "Guidance",
+          "type": "string"
+        },
+        "mode": {
+          "$ref": "#/$defs/InteractionMode"
+        },
+        "name": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "source_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Source Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "channel_id",
+        "mode",
+        "name",
+        "guidance",
+        "source_ids"
+      ],
+      "title": "SubmissionChannel",
+      "type": "object"
+    },
+    "SyntheticPersona": {
+      "additionalProperties": false,
+      "properties": {
+        "display_name": {
+          "additionalProperties": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 12,
+          "minProperties": 1,
+          "title": "Display Name",
+          "type": "object"
+        },
+        "field_ids": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Field Ids",
+          "type": "array"
+        },
+        "persona_id": {
+          "maxLength": 80,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Persona Id",
+          "type": "string"
+        },
+        "readiness_answers": {
+          "maxProperties": 30,
+          "minProperties": 1,
+          "patternProperties": {
+            "^[a-z0-9]+(?:-[a-z0-9]+)*$": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "integer"
+                },
+                {
+                  "maxLength": 240,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "propertyNames": {
+            "maxLength": 80
+          },
+          "title": "Readiness Answers",
+          "type": "object"
+        },
+        "synthetic": {
+          "const": true,
+          "title": "Synthetic",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "persona_id",
+        "display_name",
+        "synthetic",
+        "readiness_answers"
+      ],
+      "title": "SyntheticPersona",
+      "type": "object"
+    },
+    "TranslationMethod": {
+      "enum": [
+        "canonical_source",
+        "machine_assisted_prototype"
+      ],
+      "title": "TranslationMethod",
+      "type": "string"
+    },
+    "TranslationReviewStatus": {
+      "enum": [
+        "canonical_verified",
+        "native_review_required"
+      ],
+      "title": "TranslationReviewStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "assistance": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AssistanceDefinition"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "category": {
+      "maxLength": 80,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Category",
+      "type": "string"
+    },
+    "department": {
+      "maxLength": 240,
+      "minLength": 1,
+      "title": "Department",
+      "type": "string"
+    },
+    "fee": {
+      "$ref": "#/$defs/FeeInformation"
+    },
+    "intent_phrases": {
+      "items": {
+        "maxLength": 240,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 30,
+      "minItems": 1,
+      "title": "Intent Phrases",
+      "type": "array"
+    },
+    "interaction_modes": {
+      "items": {
+        "$ref": "#/$defs/InteractionMode"
+      },
+      "maxItems": 4,
+      "minItems": 1,
+      "title": "Interaction Modes",
+      "type": "array"
+    },
+    "jurisdiction": {
+      "$ref": "#/$defs/Jurisdiction"
+    },
+    "last_verified_at": {
+      "format": "date-time",
+      "title": "Last Verified At",
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "$ref": "#/$defs/CitedFact"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "Limitations",
+      "type": "array"
+    },
+    "localization": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PackLocalization"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "official_handoff_url": {
+      "format": "uri",
+      "maxLength": 2083,
+      "minLength": 1,
+      "title": "Official Handoff Url",
+      "type": "string"
+    },
+    "pack_version": {
+      "maxLength": 32,
+      "pattern": "^[1-9]\\d*\\.\\d+\\.\\d+$",
+      "title": "Pack Version",
+      "type": "string"
+    },
+    "provenance": {
+      "maxProperties": 100,
+      "minProperties": 1,
+      "patternProperties": {
+        "^[a-z0-9]+(?:-[a-z0-9]+)*$": {
+          "items": {
+            "maxLength": 80,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "propertyNames": {
+        "maxLength": 80
+      },
+      "title": "Provenance",
+      "type": "object"
+    },
+    "publisher": {
+      "maxLength": 240,
+      "minLength": 1,
+      "title": "Publisher",
+      "type": "string"
+    },
+    "readiness": {
+      "$ref": "#/$defs/ReadinessDefinition"
+    },
+    "required_documents": {
+      "items": {
+        "$ref": "#/$defs/DocumentGuidance"
+      },
+      "maxItems": 30,
+      "minItems": 1,
+      "title": "Required Documents",
+      "type": "array"
+    },
+    "requirements": {
+      "items": {
+        "$ref": "#/$defs/CitedFact"
+      },
+      "maxItems": 30,
+      "minItems": 1,
+      "title": "Requirements",
+      "type": "array"
+    },
+    "review_due_at": {
+      "format": "date-time",
+      "title": "Review Due At",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "service_id": {
+      "maxLength": 80,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Service Id",
+      "type": "string"
+    },
+    "short_description": {
+      "additionalProperties": {
+        "maxLength": 240,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxProperties": 12,
+      "minProperties": 1,
+      "title": "Short Description",
+      "type": "object"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/SourceRecord"
+      },
+      "maxItems": 30,
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    },
+    "status": {
+      "$ref": "#/$defs/LifecycleStatus"
+    },
+    "steps": {
+      "items": {
+        "$ref": "#/$defs/ProcedureStep"
+      },
+      "maxItems": 50,
+      "minItems": 1,
+      "title": "Steps",
+      "type": "array"
+    },
+    "submission_channels": {
+      "items": {
+        "$ref": "#/$defs/SubmissionChannel"
+      },
+      "maxItems": 8,
+      "minItems": 1,
+      "title": "Submission Channels",
+      "type": "array"
+    },
+    "title": {
+      "additionalProperties": {
+        "maxLength": 240,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxProperties": 12,
+      "minProperties": 1,
+      "title": "Title",
+      "type": "object"
+    },
+    "tracking_guidance": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CitedFact"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "schema_version",
+    "service_id",
+    "pack_version",
+    "status",
+    "jurisdiction",
+    "department",
+    "publisher",
+    "title",
+    "short_description",
+    "intent_phrases",
+    "category",
+    "interaction_modes",
+    "sources",
+    "last_verified_at",
+    "review_due_at",
+    "requirements",
+    "required_documents",
+    "fee",
+    "steps",
+    "submission_channels",
+    "official_handoff_url",
+    "limitations",
+    "readiness",
+    "provenance"
+  ],
+  "title": "ProcedurePack",
+  "type": "object"
+}
